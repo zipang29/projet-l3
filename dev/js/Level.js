@@ -31,7 +31,7 @@ function loadLevel(level) {
 function loadLevel1() {
 	var canvas = document.getElementById("elevator");
     var context = canvas.getContext("2d");
- 
+	
     // Montagne en arrière plan
     var montagneFond = new Image();
     montagneFond.onload = function () {
