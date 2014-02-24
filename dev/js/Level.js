@@ -29,9 +29,7 @@ function loadLevel(level) {
 * Charge les éléments du niveau 1 du jeu
 */
 function loadLevel1() {
-	var canvas = document.getElementById("elevator");
-    var context = canvas.getContext("2d");
-	
+	canvas.style.backgroundColor = "#77abe5";
     // Montagne en arrière plan
     var montagneFond = new Image();
     montagneFond.onload = function () {
@@ -40,6 +38,13 @@ function loadLevel1() {
         var montagneAvant = new Image();
         montagneAvant.onload = function() {
             context.drawImage(this, 0, 0);
+			
+			//Chargement du sol
+			var sol = new Image();
+			sol.onload = function () {
+				context.drawImage(this, 0, 465); //500(hauteur du canvas) - hauteur de l'image
+			}
+			sol.src = 'img/decors/lvl1/sol.png';
         };
         montagneAvant.src = 'img/decors/lvl1/montagneAvant.png';
     };
