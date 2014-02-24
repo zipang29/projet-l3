@@ -9,4 +9,10 @@ function init() {
     context = canvas.getContext("2d");
 	currentLevel = 1;
 	loadLevel(currentLevel);
+	setInterval(redraw, 1000 / 30);
+}
+
+function redraw() {
+	context.clearRect(canvas.width, canvas.height);
+	loadLevel(currentLevel);
 }
