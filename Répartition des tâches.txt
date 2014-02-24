@@ -1,0 +1,7 @@
+-[Taoufik, Guillaume]Gestion des collisions
+-[Guillaume]Les design par niveau (créer les images)
+-[Taoufik, Meriam, Guillaume, Basile, Jean Paul]Implémenter les niveaux
+-[Taoufik, Guillaume]Gérer l'actualisation du canvas/faire défiler le décors (avancer, reculer le personnage)
+-[Meriam]Gestion des autres commandes, ajout de l'audio, gestion du score
+-[Jean Paul]Implémentation des énnemis
+-[Basile]Composition des musiques
