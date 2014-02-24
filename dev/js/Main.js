@@ -1,7 +1,7 @@
 //Variables globales à définir ici
 var canvas, context, currentLevel;
 var x;
-var f1, f2;
+var f1, f2, sol;
 
 /**
 * Fonction utilisée pour initialiser et lancer le jeu
@@ -20,7 +20,7 @@ function init() {
 */
 function redraw() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
-	loadLevel(currentLevel);
+	updateLevel(currentLevel);
 }
 
 /**
@@ -58,6 +58,29 @@ function loadLevel(level) {
 	}
 }
 
+function updateLevel(level) {
+	switch (level) {
+		case 1:
+			updateLevel1();
+		break;
+		case 2:
+		
+		break;
+		case 3:
+		
+		break;
+		case 4:
+		
+		break;
+		case 5:
+		
+		break;
+		default:
+			updateLevel1();
+		break;
+	}
+}
+
 /**
 * Charge les éléments du niveau 1 du jeu
 */
@@ -66,14 +89,14 @@ function loadLevel1() {
     // Montagne en arrière plan
     f1 = new Image();
     f1.onload = function () {
-        context.drawImage(this, x, 0);
+        context.drawImage(this, 0, 0);
         // Montagne à l'avant plan
         f2 = new Image();
         f2.onload = function() {
-            context.drawImage(this, x, 0);
+            context.drawImage(this, 0, 0);
 			
 			//Chargement du sol
-			var sol = new Image();
+			sol = new Image();
 			sol.onload = function () {
 				context.drawImage(this, 0, 465); //500(hauteur du canvas) - hauteur de l'image
 			}
@@ -83,6 +106,12 @@ function loadLevel1() {
     };
     // Toujours définir la source après ajout de l'écouteur
     f1.src = 'img/decors/lvl1/montagneArriere.png';
+}
+
+function updateLevel1() {
+	context.drawImage(f1, x, 0);
+	context.drawImage(f2, x, 0);
+	context.drawImage(sol, 0, 465);
 }
 
 /**
