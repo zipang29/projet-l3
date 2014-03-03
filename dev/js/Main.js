@@ -12,7 +12,6 @@ function init() {
     context = canvas.getContext("2d");
 	currentLevel = 1;
 	loadLevel(currentLevel);
-	//setInterval(redraw, 1000 / 30);
 }
 
 /**
