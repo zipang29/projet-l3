@@ -59,7 +59,7 @@ function loadPersonnage() {
 	p1 = new Image();
 	p2 = new Image();
 	p0.onload = function() {
-		context.drawImage(this, 50, canvas.height - p1.height - sol.height);
+		context.drawImage(this, xPerso, canvas.height - p1.height - sol.height);
 		statutPersonnage = 1; // On initialise à 1 (ou 2) car sinon la première fois qu'on va avancer, l'image statique s'affichera 2 fois d'affilé au lieu d'une
 	}
 	p0.src = 'img/personnage/joueur/0.png';
@@ -67,18 +67,21 @@ function loadPersonnage() {
 	p2.src = 'img/personnage/joueur/2.png';
 }
 
+/**
+* Gère l'affichage du personnage (mise à jour) et son annimation
+*/
 function updatePersonnage() {
 	if (statutPersonnage == 0) {
 		statutPersonnage++;
-		context.drawImage(p0, 50, canvas.height - p1.height - sol.height);
+		context.drawImage(p0, xPerso, canvas.height - p1.height - sol.height);
 	}
 	else if (statutPersonnage == 1) {
 		statutPersonnage++;
-		context.drawImage(p1, 50, canvas.height - p1.height - sol.height);
+		context.drawImage(p1, xPerso, canvas.height - p1.height - sol.height);
 	}
 	else {
 		statutPersonnage = 0;
-		context.drawImage(p2, 50, canvas.height - p1.height - sol.height);
+		context.drawImage(p2, xPerso, canvas.height - p1.height - sol.height);
 	}
 }
 

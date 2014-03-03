@@ -4,7 +4,8 @@ var canvas, context, currentLevel;
 /** 
 * Images 
 */
-var x; // Position de x actuelle;
+var x; // Position de x actuelle pour le fond
+var xPerso; // Position de x actuelle du personnage
 var f1, f2, sol; // Image de fond 1, image de fond 2, image du sol
 var p0, p1, p2; // Personnage statique, personnage qui avance état 1, personnage qui avance état 2
 
@@ -13,6 +14,7 @@ var p0, p1, p2; // Personnage statique, personnage qui avance état 1, personnag
 */
 function init() {
 	x = 0;
+	xPerso = 50;
 	canvas = document.getElementById("elevator");
     context = canvas.getContext("2d");
 	currentLevel = 1;
