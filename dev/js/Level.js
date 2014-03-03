@@ -64,7 +64,7 @@ function loadPersonnage() {
 	}
 	p1.src = 'img/personnage/joueur/personnage3.png';
 	p2.src = 'img/personnage/joueur/personnage2.png';
-	p3.src = 'img/personnage/joueur/personnage1.png';
+	p3.src = 'img/personnage/joueur/personnage.png';
 }
 
 function updatePersonnage() {
@@ -77,8 +77,8 @@ function updatePersonnage() {
 		context.drawImage(p3, 50, canvas.height - p1.height - sol.height);
 	}
 	else {
-		context.drawImage(p1, 50, canvas.height - p1.height - sol.height);
 		statutPersonnage = 0;
+		context.drawImage(p1, 50, canvas.height - p1.height - sol.height);
 	}
 }
 
