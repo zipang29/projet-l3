@@ -1,4 +1,4 @@
-var statutPersonnage; // Permet de connaitre 
+var statutPersonnage; // Permet de connaitre le statut de l'image du personnage (pour l'animation) : 0 : personnage statique 1 : état 1 de l'animation, 2 : état 2 de l'animation
 
 /**
 * Charge le niveau correspondant
