@@ -60,7 +60,7 @@ function loadPersonnage() {
 	p2 = new Image();
 	p0.onload = function() {
 		context.drawImage(this, 50, canvas.height - p1.height - sol.height);
-		statutPersonnage = 0;
+		statutPersonnage = 1; // On initialise à 1 (ou 2) car sinon la première fois qu'on va avancer, l'image statique s'affichera 2 fois d'affilé au lieu d'une
 	}
 	p0.src = 'img/personnage/joueur/0.png';
 	p1.src = 'img/personnage/joueur/1.png';
