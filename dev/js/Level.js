@@ -1,3 +1,5 @@
+var statutPersonnage;
+
 /**
 * Charge le niveau correspondant
 * @var int level Le numéro du niveau à charger
@@ -58,12 +60,26 @@ function loadPersonnage() {
 	p3 = new Image();
 	p1.onload = function() {
 		context.drawImage(this, 50, canvas.height - p1.height - sol.height);
+		statutPersonnage = 0;
 	}
 	p1.src = 'img/personnage/joueur/personnage3.png';
+	p2.src = 'img/personnage/joueur/personnage2.png';
+	p3.src = 'img/personnage/joueur/personnage1.png';
 }
 
 function updatePersonnage() {
-	context.drawImage(p1, 50, canvas.height - p1.height - sol.height);
+	if (statutPersonnage == 0) {
+		statutPersonnage++;
+		context.drawImage(p2, 50, canvas.height - p1.height - sol.height);
+	}
+	else if (statutPersonnage == 1) {
+		statutPersonnage++;
+		context.drawImage(p3, 50, canvas.height - p1.height - sol.height);
+	}
+	else {
+		context.drawImage(p1, 50, canvas.height - p1.height - sol.height);
+		statutPersonnage = 0;
+	}
 }
 
 /**
