@@ -6,7 +6,7 @@ var canvas, context, currentLevel;
 */
 var x; // Position de x actuelle;
 var f1, f2, sol; // Image de fond 1, image de fond 2, image du sol
-var p1, p2, p3; // Personnage statique, personnage qui avance état 1, personnage qui avance état 2
+var p0, p1, p2; // Personnage statique, personnage qui avance état 1, personnage qui avance état 2
 
 /**
 * Fonction utilisée pour initialiser et lancer le jeu

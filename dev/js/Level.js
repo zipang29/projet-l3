@@ -1,4 +1,4 @@
-var statutPersonnage;
+var statutPersonnage; // Permet de connaitre 
 
 /**
 * Charge le niveau correspondant
@@ -55,30 +55,30 @@ function updateLevel(level) {
 * Gère le chargement des images du personnages et affiche le personnage statique
 */
 function loadPersonnage() {
+	p0 = new Image();
 	p1 = new Image();
 	p2 = new Image();
-	p3 = new Image();
-	p1.onload = function() {
+	p0.onload = function() {
 		context.drawImage(this, 50, canvas.height - p1.height - sol.height);
 		statutPersonnage = 0;
 	}
-	p1.src = 'img/personnage/joueur/personnage3.png';
-	p2.src = 'img/personnage/joueur/personnage2.png';
-	p3.src = 'img/personnage/joueur/personnage.png';
+	p0.src = 'img/personnage/joueur/0.png';
+	p1.src = 'img/personnage/joueur/1.png';
+	p2.src = 'img/personnage/joueur/2.png';
 }
 
 function updatePersonnage() {
 	if (statutPersonnage == 0) {
 		statutPersonnage++;
-		context.drawImage(p2, 50, canvas.height - p1.height - sol.height);
+		context.drawImage(p0, 50, canvas.height - p1.height - sol.height);
 	}
 	else if (statutPersonnage == 1) {
 		statutPersonnage++;
-		context.drawImage(p3, 50, canvas.height - p1.height - sol.height);
+		context.drawImage(p1, 50, canvas.height - p1.height - sol.height);
 	}
 	else {
 		statutPersonnage = 0;
-		context.drawImage(p1, 50, canvas.height - p1.height - sol.height);
+		context.drawImage(p2, 50, canvas.height - p1.height - sol.height);
 	}
 }
 

@@ -14,5 +14,17 @@ document.onkeydown = function(e) {
 			x += 10;
 		}
 	}
-	redraw();
+	redraw(); // On actualise l'affichage pour prendre en compte les modifications
 };
+
+/**
+* Fonction anonyme qui s'exécute lorsqu'on relache une touche du clavier
+*/
+document.onkeyup = function(e) {
+	// Si on relache la flèche droite
+	if (window.event.keyCode == 39 || window.event.keyCode == 37) {
+		statutPersonnage = 0; // On affiche l'image du personnage qui ne marche pas
+		context.drawImage(p1, 50, canvas.height - p1.height - sol.height);
+	}
+	redraw();
+}
