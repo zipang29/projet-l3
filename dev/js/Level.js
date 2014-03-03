@@ -29,6 +29,7 @@ function updateLevel(level) {
 	switch (level) {
 		case 1:
 			updateLevel1();
+			updatePersonnage();
 		break;
 		case 2:
 		
@@ -49,6 +50,23 @@ function updateLevel(level) {
 }
 
 /**
+* Gère le chargement des images du personnages et affiche le personnage statique
+*/
+function loadPersonnage() {
+	p1 = new Image();
+	p2 = new Image();
+	p3 = new Image();
+	p1.onload = function() {
+		context.drawImage(this, 50, canvas.height - p1.height - sol.height);
+	}
+	p1.src = 'img/personnage/joueur/personnage3.png';
+}
+
+function updatePersonnage() {
+	context.drawImage(p1, 50, canvas.height - p1.height - sol.height);
+}
+
+/**
 * Charge les éléments du niveau 1 du jeu
 */
 function loadLevel1() {
@@ -65,7 +83,8 @@ function loadLevel1() {
 			//Chargement du sol
 			sol = new Image();
 			sol.onload = function () {
-				context.drawImage(this, 0, 465); //500(hauteur du canvas) - hauteur de l'image
+				context.drawImage(this, 0, canvas.height - sol.height);
+				loadPersonnage();
 			}
 			sol.src = 'img/decors/lvl1/sol.png';
         };
@@ -78,7 +97,7 @@ function loadLevel1() {
 function updateLevel1() {
 	context.drawImage(f1, x, 0);
 	context.drawImage(f2, x, 0);
-	context.drawImage(sol, 0, 465);
+	context.drawImage(sol, 0, canvas.height - sol.height);
 }
 
 /**
