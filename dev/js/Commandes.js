@@ -4,6 +4,7 @@
 document.onkeydown = function(e) {
 	// Flèche droite : on avance
 	if (e.keyCode == 39) {
+		recule = false;
 		if (xPerso == 450) {
 			if (Math.abs(x - 10) < f1.width - canvas.width && Math.abs(x - 10) < f2.width - canvas.width) {
 				x -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche
@@ -15,7 +16,8 @@ document.onkeydown = function(e) {
 	}
 	// Flèche gauche : on recule
 	if (e.keyCode == 37) {
-		if (x <= 250 && xPerso > 0) {
+		recule = true;
+		if (xPerso <= 450 && xPerso > 0) {
 			xPerso -= 10;
 		}
 		else {

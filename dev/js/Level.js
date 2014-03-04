@@ -1,4 +1,18 @@
-var statutPersonnage; // Permet de connaitre le statut de l'image du personnage (pour l'animation) : 0 : personnage statique 1 : état 1 de l'animation, 2 : état 2 de l'animation
+/**
+* Permet de connaitre le statut de l'image du personnage (pour l'animation) : 
+* 0 : personnage statique avant
+* 1 : état 1 de l'animation avant
+* 2 : état 2 de l'animation avant
+* 3 : personnage statique arrière
+* 4 : état 1 de l'animation arrière
+* 5 : état 5 de l'animation arrière
+*/
+var statutPersonnage;
+
+/**
+* Booleen permettant de savoir si on avance ou si on recule (pour l'animation du personnage)
+*/
+var reculer = false;
 
 /**
 * Charge le niveau correspondant
@@ -58,6 +72,9 @@ function loadPersonnage() {
 	p0 = new Image();
 	p1 = new Image();
 	p2 = new Image();
+	p3 = new Image();
+	p4 = new Image();
+	p5 = new Image();
 	p0.onload = function() {
 		context.drawImage(this, xPerso, canvas.height - p1.height - sol.height);
 		statutPersonnage = 1; // On initialise à 1 (ou 2) car sinon la première fois qu'on va avancer, l'image statique s'affichera 2 fois d'affilé au lieu d'une
@@ -65,23 +82,42 @@ function loadPersonnage() {
 	p0.src = 'img/personnage/joueur/0.png';
 	p1.src = 'img/personnage/joueur/1.png';
 	p2.src = 'img/personnage/joueur/2.png';
+	p3.src = 'img/personnage/joueur/3.png';
+	p4.src = 'img/personnage/joueur/4.png';
+	p5.src = 'img/personnage/joueur/5.png';
 }
 
 /**
 * Gère l'affichage du personnage (mise à jour) et son annimation
 */
 function updatePersonnage() {
-	if (statutPersonnage == 0) {
-		statutPersonnage++;
-		context.drawImage(p0, xPerso, canvas.height - p1.height - sol.height);
+	if (!recule) {
+		if (statutPersonnage == 0) {
+			statutPersonnage++;
+			context.drawImage(p0, xPerso, canvas.height - p1.height - sol.height);
+		}
+		else if (statutPersonnage == 1) {
+			statutPersonnage++;
+			context.drawImage(p1, xPerso, canvas.height - p1.height - sol.height);
+		}
+		else {
+			statutPersonnage = 0;
+			context.drawImage(p2, xPerso, canvas.height - p1.height - sol.height);
+		}
 	}
-	else if (statutPersonnage == 1) {
-		statutPersonnage++;
-		context.drawImage(p1, xPerso, canvas.height - p1.height - sol.height);
-	}
-	else {
-		statutPersonnage = 0;
-		context.drawImage(p2, xPerso, canvas.height - p1.height - sol.height);
+	if (recule) {
+		if (statutPersonnage == 3) {
+			statutPersonnage++;
+			context.drawImage(p3, xPerso, canvas.height - p1.height - sol.height);
+		}
+		else if (statutPersonnage == 4) {
+			statutPersonnage++;
+			context.drawImage(p4, xPerso, canvas.height - p1.height - sol.height);
+		}
+		else {
+			statutPersonnage = 3;
+			context.drawImage(p5, xPerso, canvas.height - p1.height - sol.height);
+		}
 	}
 }
 
