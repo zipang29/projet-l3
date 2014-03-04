@@ -1,4 +1,9 @@
 /**
+* Booleen permettant de savoir si on avance ou si on recule (pour l'animation du personnage)
+*/
+var reculer = false;
+
+/**
 * Fonction anonyme qui s'exécute (évènement) à la pression d'une touche du clavier
 */
 document.onkeydown = function(e) {

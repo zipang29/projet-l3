@@ -10,11 +10,6 @@
 var statutPersonnage;
 
 /**
-* Booleen permettant de savoir si on avance ou si on recule (pour l'animation du personnage)
-*/
-var reculer = false;
-
-/**
 * Charge le niveau correspondant
 * @var int level Le numéro du niveau à charger
 */
@@ -46,6 +41,7 @@ function updateLevel(level) {
 		case 1:
 			updateLevel1();
 			updatePersonnage();
+			updateInterface();
 		break;
 		case 2:
 		
@@ -122,6 +118,36 @@ function updatePersonnage() {
 }
 
 /**
+* Charge l'interface du jeu (score, coeurs de vie, bonus de santé...etc)
+*/
+function loadInterface() {
+	coeur = new Image();
+	coeur.onload = function() {
+		context.drawImage(this, 10, 10);
+		context.drawImage(this, 50, 10);
+		context.drawImage(this, 90, 10);
+	}
+	coeur.src = 'img/objets/coeurPlain.png';
+	coeurPerdu = new Image();
+	coeurPerdu.onload = function() {
+		context.drawImage(this, 130, 10);
+		context.drawImage(this, 170, 10);
+	}
+	coeurPerdu.src = 'img/objets/coeurVide.png';
+}
+
+/**
+* Met à jour l'interface du jeu (score, coeurs de vie, bonus de santé...etc)
+*/
+function updateInterface() {
+	context.drawImage(coeur, 10, 10);
+	context.drawImage(coeur, 50, 10);
+	context.drawImage(coeur, 90, 10);
+	context.drawImage(coeurPerdu, 130, 10);
+	context.drawImage(coeurPerdu, 170, 10);
+}
+
+/**
 * Charge les éléments du niveau 1 du jeu
 */
 function loadLevel1() {
@@ -140,6 +166,7 @@ function loadLevel1() {
 			sol.onload = function () {
 				context.drawImage(this, 0, canvas.height - sol.height);
 				loadPersonnage();
+				loadInterface();
 			}
 			sol.src = 'img/decors/lvl1/sol.png';
         };
