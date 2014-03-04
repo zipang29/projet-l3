@@ -1,6 +1,9 @@
 //Variables globales à définir ici
 var canvas, context, currentLevel;
 
+var vie; // Points de vie restant
+var score = 0;
+
 /** 
 * Images 
 */

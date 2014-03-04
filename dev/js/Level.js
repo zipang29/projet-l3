@@ -134,6 +134,9 @@ function loadInterface() {
 		context.drawImage(this, 170, 10);
 	}
 	coeurPerdu.src = 'img/objets/coeurVide.png';
+	context.font = '20px Arial';
+	context.fillText("Score : " + score, 850, 30);
+	
 }
 
 /**
@@ -145,6 +148,7 @@ function updateInterface() {
 	context.drawImage(coeur, 90, 10);
 	context.drawImage(coeurPerdu, 130, 10);
 	context.drawImage(coeurPerdu, 170, 10);
+	context.fillText("Score : " + score, 850, 30);
 }
 
 /**
