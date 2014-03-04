@@ -13,6 +13,8 @@ var f1, f2, sol; // Image de fond 1, image de fond 2, image du sol
 var p0, p1, p2; // Personnage statique, personnage qui avance état 1, personnage qui avance état 2
 var coeur; // Image de coeur de vie
 var coeurPerdu; // Image d'un coeur de vie perdu
+// Les ennemis
+var bidon1, bidon2, xBidon;
 
 /**
 * Fonction utilisée pour initialiser et lancer le jeu
@@ -20,6 +22,7 @@ var coeurPerdu; // Image d'un coeur de vie perdu
 function init() {
 	x = 0;
 	xPerso = 50;
+	xBidon = 400;
 	canvas = document.getElementById("elevator");
     context = canvas.getContext("2d");
 	currentLevel = 1;

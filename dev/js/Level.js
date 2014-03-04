@@ -117,6 +117,16 @@ function updatePersonnage() {
 	}
 }
 
+function loadEnnemis() {
+	bidon1 = new Image();
+	bidon1.onload = function() {
+		context.drawImage(this, xBidon, canvas.height - bidon1.height - sol.height);
+	}
+	bidon1.src = 'img/personnage/ennemis/bidon1.png';
+	bidon2 = new Image();
+	bidon2.src = 'img/personnage/ennemis/bidon2.png';
+}
+
 /**
 * Charge l'interface du jeu (score, coeurs de vie, bonus de santé...etc)
 */
@@ -170,6 +180,7 @@ function loadLevel1() {
 			sol.onload = function () {
 				context.drawImage(this, 0, canvas.height - sol.height);
 				loadPersonnage();
+				loadEnnemis();
 				loadInterface();
 			}
 			sol.src = 'img/decors/lvl1/sol.png';
