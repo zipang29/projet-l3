@@ -13,6 +13,7 @@ document.onkeydown = function(e) {
 		else {
 			xPerso += 10;
 		}
+		redraw();
 	}
 	// Flèche gauche : on recule
 	if (e.keyCode == 37) {
@@ -25,8 +26,8 @@ document.onkeydown = function(e) {
 				x += 10;
 			}
 		}
+		redraw(); // On actualise l'affichage pour prendre en compte les modifications
 	}
-	redraw(); // On actualise l'affichage pour prendre en compte les modifications
 };
 
 /**
@@ -37,6 +38,6 @@ document.onkeyup = function(e) {
 	if (e.keyCode == 39 || e.keyCode == 37) {
 		statutPersonnage = 0; // On affiche l'image du personnage qui ne marche pas
 		context.drawImage(p1, xPerso, canvas.height - p1.height - sol.height);
+		redraw();
 	}
-	redraw();
 }
