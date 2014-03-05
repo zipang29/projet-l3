@@ -7,7 +7,7 @@
 * 4 : état 1 de l'animation arrière
 * 5 : état 5 de l'animation arrière
 */
-var statutPersonnage;
+var statutPersonnage = 0;
 
 /**
 * Charge le niveau correspondant
@@ -73,7 +73,6 @@ function loadPersonnage() {
 	p5 = new Image();
 	p0.onload = function() {
 		context.drawImage(this, xPerso, canvas.height - p1.height - sol.height);
-		statutPersonnage = 1; // On initialise à 1 (ou 2) car sinon la première fois qu'on va avancer, l'image statique s'affichera 2 fois d'affilé au lieu d'une
 	}
 	p0.src = 'img/personnage/joueur/0.png';
 	p1.src = 'img/personnage/joueur/1.png';
@@ -87,33 +86,23 @@ function loadPersonnage() {
 * Gère l'affichage du personnage (mise à jour) et son annimation
 */
 function updatePersonnage() {
-	if (!recule) {
-		if (statutPersonnage == 0) {
-			statutPersonnage++;
-			context.drawImage(p0, xPerso, canvas.height - p1.height - sol.height);
-		}
-		else if (statutPersonnage == 1) {
-			statutPersonnage++;
-			context.drawImage(p1, xPerso, canvas.height - p1.height - sol.height);
-		}
-		else {
-			statutPersonnage = 0;
-			context.drawImage(p2, xPerso, canvas.height - p1.height - sol.height);
-		}
+	if (statutPersonnage == 0) {
+		context.drawImage(p0, xPerso, canvas.height - p1.height - sol.height);
 	}
-	if (recule) {
-		if (statutPersonnage == 3) {
-			statutPersonnage++;
-			context.drawImage(p3, xPerso, canvas.height - p1.height - sol.height);
-		}
-		else if (statutPersonnage == 4) {
-			statutPersonnage++;
-			context.drawImage(p4, xPerso, canvas.height - p1.height - sol.height);
-		}
-		else {
-			statutPersonnage = 3;
-			context.drawImage(p5, xPerso, canvas.height - p1.height - sol.height);
-		}
+	else if (statutPersonnage == 1) {
+		context.drawImage(p1, xPerso, canvas.height - p1.height - sol.height);
+	}
+	else if (statutPersonnage == 2) {
+		context.drawImage(p2, xPerso, canvas.height - p1.height - sol.height);
+	}
+	else if (statutPersonnage == 3) {
+		context.drawImage(p3, xPerso, canvas.height - p1.height - sol.height);
+	}
+	else if (statutPersonnage == 4) {
+		context.drawImage(p4, xPerso, canvas.height - p1.height - sol.height);
+	}
+	else {
+		context.drawImage(p5, xPerso, canvas.height - p1.height - sol.height);
 	}
 }
 
@@ -174,14 +163,10 @@ function loadLevel1() {
         f2 = new Image();
         f2.onload = function() {
             context.drawImage(this, 0, 0);
-			
 			//Chargement du sol
 			sol = new Image();
 			sol.onload = function () {
 				context.drawImage(this, 0, canvas.height - sol.height);
-				loadPersonnage();
-				loadEnnemis();
-				loadInterface();
 			}
 			sol.src = 'img/decors/lvl1/sol.png';
         };
@@ -189,6 +174,9 @@ function loadLevel1() {
     };
     // Toujours définir la source après ajout de l'écouteur
     f1.src = 'img/decors/lvl1/montagneArriere.png';
+	loadPersonnage();
+	loadEnnemis();
+	loadInterface();
 }
 
 function updateLevel1() {

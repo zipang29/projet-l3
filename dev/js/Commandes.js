@@ -10,6 +10,12 @@ document.onkeydown = function(e) {
 	// Flèche droite : on avance
 	if (e.keyCode == 39) {
 		recule = false;
+		if (statutPersonnage >= 0 && statutPersonnage < 2) {
+			statutPersonnage++;
+		}
+		else {
+			statutPersonnage = 0;
+		}
 		if (xPerso == 450) {
 			if (Math.abs(x - 10) < f1.width - canvas.width && Math.abs(x - 10) < f2.width - canvas.width) {
 				x -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche
@@ -18,11 +24,16 @@ document.onkeydown = function(e) {
 		else {
 			xPerso += 10;
 		}
-		redraw();
 	}
 	// Flèche gauche : on recule
 	if (e.keyCode == 37) {
 		recule = true;
+		if (statutPersonnage >= 3 && statutPersonnage < 5) {
+			statutPersonnage++;
+		}
+		else {
+			statutPersonnage = 3;
+		}
 		if (xPerso <= 450 && xPerso > 0) {
 			xPerso -= 10;
 		}
@@ -31,7 +42,6 @@ document.onkeydown = function(e) {
 				x += 10;
 			}
 		}
-		redraw(); // On actualise l'affichage pour prendre en compte les modifications
 	}
 };
 
@@ -41,8 +51,12 @@ document.onkeydown = function(e) {
 document.onkeyup = function(e) {
 	// Si on relache la flèche droite
 	if (e.keyCode == 39 || e.keyCode == 37) {
-		statutPersonnage = 0; // On affiche l'image du personnage qui ne marche pas
+		if (!recule) {
+			statutPersonnage = 0; // On affiche l'image du personnage qui ne marche pas
+		}
+		else {
+			statutPersonnage = 5;
+		}
 		context.drawImage(p1, xPerso, canvas.height - p1.height - sol.height);
-		redraw();
 	}
 }
