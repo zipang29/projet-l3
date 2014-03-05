@@ -41,7 +41,9 @@ function updateLevel(level) {
 		case 1:
 			updateLevel1();
 			updatePersonnage();
-			updateEnnemis();
+			for (var i = 0, c = ennemis.length; i < c; i++) {
+				ennemis[i].update();
+			}
 			updateInterface();
 		break;
 		case 2:
@@ -109,11 +111,27 @@ function loadEnnemis() {
 	bidon1.src = 'img/personnage/ennemis/bidon1.png';
 	bidon2 = new Image();
 	bidon2.src = 'img/personnage/ennemis/bidon2.png';
+	b1 = new Bidon(400, 600);
+	setInterval("b1.lancerAnnimation()", 500);
+	ennemis.push(b1);
 }
 
-function updateEnnemis() {
-	context.drawImage(bidon1, xBidon, canvas.height - bidon1.height - sol.height);
-}
+/*function addEnnemis(x1, x2) {
+	var currentPos = x1;
+	var avance = true; // true => vers la gauche, false, vers la droite
+	setInterval(function() {
+		if (avance && currentPos < x2) {
+			currentPos += 10;
+		}
+		else {
+			currentPos -= 10;
+		}
+	}, 500);
+}*/
+
+/*function updateEnnemis() {
+	context.drawImage(bidon1, x + x1, canvas.height - bidon1.height - sol.height);
+}*/
 
 /**
 * Charge l'interface du jeu (score, coeurs de vie, bonus de santé...etc)

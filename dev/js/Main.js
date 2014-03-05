@@ -1,8 +1,10 @@
 //Variables globales à définir ici
 var canvas, context, currentLevel;
 
-var vie; // Points de vie restant
+var vie = 3; // Points de vie restant (3 sur 5 au début du jeu)
 var score = 0;
+
+var ennemis = [];
 
 /** 
 * Images 
@@ -14,7 +16,7 @@ var p0, p1, p2; // Personnage statique, personnage qui avance état 1, personnag
 var coeur; // Image de coeur de vie
 var coeurPerdu; // Image d'un coeur de vie perdu
 // Les ennemis
-var bidon1, bidon2, xBidon;
+var bidon1, bidon2;
 
 /**
 * Fonction utilisée pour initialiser et lancer le jeu
@@ -22,7 +24,6 @@ var bidon1, bidon2, xBidon;
 function init() {
 	x = 0;
 	xPerso = 50;
-	xBidon = 400;
 	canvas = document.getElementById("elevator");
     context = canvas.getContext("2d");
 	currentLevel = 1;
