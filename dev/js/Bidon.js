@@ -1,4 +1,5 @@
 /**
+* Classe Bidon pour gérer les énnemies de type "bidon"
 * x1 : la position de départ du bidon
 * x2 : le position maximale de déplacement du bidon
 */
@@ -25,6 +26,11 @@ function Bidon(x1, x2) {
 	};
 	
 	this.update = function() {
-		context.drawImage(bidon1, x + this.currentPos, canvas.height - bidon1.height - sol.height);
+		if (this.avance) {
+			context.drawImage(bidon2, x + this.currentPos, canvas.height - bidon1.height - sol.height);
+		}
+		else {
+			context.drawImage(bidon1, x + this.currentPos, canvas.height - bidon1.height - sol.height);
+		}
 	};
 }
