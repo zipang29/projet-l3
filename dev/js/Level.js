@@ -41,6 +41,7 @@ function updateLevel(level) {
 		case 1:
 			updateLevel1();
 			updatePersonnage();
+			updateEnnemis();
 			updateInterface();
 		break;
 		case 2:
@@ -71,9 +72,6 @@ function loadPersonnage() {
 	p3 = new Image();
 	p4 = new Image();
 	p5 = new Image();
-	p0.onload = function() {
-		context.drawImage(this, xPerso, canvas.height - p1.height - sol.height);
-	}
 	p0.src = 'img/personnage/joueur/0.png';
 	p1.src = 'img/personnage/joueur/1.png';
 	p2.src = 'img/personnage/joueur/2.png';
@@ -108,12 +106,13 @@ function updatePersonnage() {
 
 function loadEnnemis() {
 	bidon1 = new Image();
-	bidon1.onload = function() {
-		context.drawImage(this, xBidon, canvas.height - bidon1.height - sol.height);
-	}
 	bidon1.src = 'img/personnage/ennemis/bidon1.png';
 	bidon2 = new Image();
 	bidon2.src = 'img/personnage/ennemis/bidon2.png';
+}
+
+function updateEnnemis() {
+	context.drawImage(bidon1, xBidon, canvas.height - bidon1.height - sol.height);
 }
 
 /**
