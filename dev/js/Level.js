@@ -112,7 +112,7 @@ function loadEnnemis() {
 	bidon2 = new Image();
 	bidon2.src = 'img/personnage/ennemis/bidon2.png';
 	b1 = new Bidon(400, 600);
-	setInterval("b1.lancerAnnimation()", 500);
+	setInterval("b1.lancerAnnimation()", 10);
 	ennemis.push(b1);
 }
 

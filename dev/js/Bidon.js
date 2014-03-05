@@ -11,10 +11,10 @@ function Bidon(x1, x2) {
 
 	this.lancerAnnimation = function() {
 		if (this.avance && this.currentPos < this.x2) {
-			this.currentPos += 10;
+			this.currentPos += 1;
 		}
 		else {
-			this.currentPos -= 10;
+			this.currentPos -= 1;
 		}
 		if (this.currentPos == x2) {
 			this.avance = false;
