@@ -116,23 +116,6 @@ function loadEnnemis() {
 	ennemis.push(b1);
 }
 
-/*function addEnnemis(x1, x2) {
-	var currentPos = x1;
-	var avance = true; // true => vers la gauche, false, vers la droite
-	setInterval(function() {
-		if (avance && currentPos < x2) {
-			currentPos += 10;
-		}
-		else {
-			currentPos -= 10;
-		}
-	}, 500);
-}*/
-
-/*function updateEnnemis() {
-	context.drawImage(bidon1, x + x1, canvas.height - bidon1.height - sol.height);
-}*/
-
 /**
 * Charge l'interface du jeu (score, coeurs de vie, bonus de santé...etc)
 */
