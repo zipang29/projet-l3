@@ -37,30 +37,35 @@ function loadLevel(level) {
 }
 
 function updateLevel(level) {
-	switch (level) {
-		case 1:
-			updateLevel1();
-			updatePersonnage();
-			for (var i = 0, c = ennemis.length; i < c; i++) {
-				ennemis[i].update();
-			}
-			updateInterface();
-		break;
-		case 2:
-		
-		break;
-		case 3:
-		
-		break;
-		case 4:
-		
-		break;
-		case 5:
-		
-		break;
-		default:
-			updateLevel1();
-		break;
+	if (joueur.vie > 0) {
+		switch (level) {
+			case 1:
+				updateLevel1();
+				updatePersonnage();
+				for (var i = 0, c = ennemis.length; i < c; i++) {
+					ennemis[i].update();
+				}
+				updateInterface();
+			break;
+			case 2:
+			
+			break;
+			case 3:
+			
+			break;
+			case 4:
+			
+			break;
+			case 5:
+			
+			break;
+			default:
+				updateLevel1();
+			break;
+		}
+	}
+	else {
+		perdu();
 	}
 }
 
@@ -225,4 +230,11 @@ function loadLevel4() {
 */
 function loadLevel5() {
 
+}
+
+/**
+* Fonction appelé lorsque le joueur n'a plus de vie et a donc perdu
+*/
+function perdu() {
+	context.fillText("Perdu !", 500, 250);
 }
