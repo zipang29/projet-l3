@@ -17,11 +17,11 @@ document.onkeydown = function(e) {
 		// Flèche droite : on avance
 		if (e.keyCode == 39) {
 			recule = false;
-			if (statutPersonnage >= 0 && statutPersonnage < 2) {
-				statutPersonnage++;
+			if (joueur.statutPersonnage >= 0 && joueur.statutPersonnage < 2) {
+				joueur.statutPersonnage++;
 			}
 			else {
-				statutPersonnage = 0;
+				joueur.statutPersonnage = 0;
 			}
 			if (xPerso == 450) {
 				if (Math.abs(x - 10) < f1.width - canvas.width && Math.abs(x - 10) < f2.width - canvas.width) {
@@ -35,11 +35,11 @@ document.onkeydown = function(e) {
 		// Flèche gauche : on recule
 		if (e.keyCode == 37) {
 			recule = true;
-			if (statutPersonnage >= 3 && statutPersonnage < 5) {
-				statutPersonnage++;
+			if (joueur.statutPersonnage >= 3 && joueur.statutPersonnage < 5) {
+				joueur.statutPersonnage++;
 			}
 			else {
-				statutPersonnage = 3;
+				joueur.statutPersonnage = 3;
 			}
 			if (xPerso <= 450 && xPerso > 0) {
 				xPerso -= 10;
@@ -52,6 +52,10 @@ document.onkeydown = function(e) {
 		}
     }, 30); // Le dernier paramètre sert à modifier la vitesse d'avancement du joueur
 	
+	// On met ceci hors de la fonction de répétition car on ne doit pas pouvoir sauter plusieurs fois d'affiler (pas avant d'avoir toucher le sol à nouveau)
+	if (e.keyCode == 32) {
+		
+	}
 };
 
 /**
@@ -63,10 +67,10 @@ document.onkeyup = function(e) {
 	// Si on relache la flèche droite
 	if (e.keyCode == 39 || e.keyCode == 37) {
 		if (!recule) {
-			statutPersonnage = 0; // On affiche l'image du personnage qui ne marche pas
+			joueur.statutPersonnage = 0; // On affiche l'image du personnage qui ne marche pas
 		}
 		else {
-			statutPersonnage = 5;
+			joueur.statutPersonnage = 5;
 		}
 		context.drawImage(p1, xPerso, canvas.height - p1.height - sol.height);
 	}

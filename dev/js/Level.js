@@ -1,15 +1,4 @@
 /**
-* Permet de connaitre le statut de l'image du personnage (pour l'animation) : 
-* 0 : personnage statique avant
-* 1 : état 1 de l'animation avant
-* 2 : état 2 de l'animation avant
-* 3 : personnage statique arrière
-* 4 : état 1 de l'animation arrière
-* 5 : état 5 de l'animation arrière
-*/
-var statutPersonnage = 0;
-
-/**
 * Charge le niveau correspondant
 * @var int level Le numéro du niveau à charger
 */
@@ -91,19 +80,19 @@ function loadPersonnage() {
 * Gère l'affichage du personnage (mise à jour) et son annimation
 */
 function updatePersonnage() {
-	if (statutPersonnage == 0) {
+	if (joueur.statutPersonnage == 0) {
 		context.drawImage(p0, xPerso, canvas.height - p1.height - sol.height);
 	}
-	else if (statutPersonnage == 1) {
+	else if (joueur.statutPersonnage == 1) {
 		context.drawImage(p1, xPerso, canvas.height - p1.height - sol.height);
 	}
-	else if (statutPersonnage == 2) {
+	else if (joueur.statutPersonnage == 2) {
 		context.drawImage(p2, xPerso, canvas.height - p1.height - sol.height);
 	}
-	else if (statutPersonnage == 3) {
+	else if (joueur.statutPersonnage == 3) {
 		context.drawImage(p3, xPerso, canvas.height - p1.height - sol.height);
 	}
-	else if (statutPersonnage == 4) {
+	else if (joueur.statutPersonnage == 4) {
 		context.drawImage(p4, xPerso, canvas.height - p1.height - sol.height);
 	}
 	else {
@@ -161,11 +150,6 @@ function updateInterface() {
 			xTmp += 40;
 		}
 	}
-	/*context.drawImage(coeur, 10, 10);
-	context.drawImage(coeur, 50, 10);
-	context.drawImage(coeur, 90, 10);
-	context.drawImage(coeurPerdu, 130, 10);
-	context.drawImage(coeurPerdu, 170, 10);*/
 	context.fillText("Score : " + score, 830, 30);
 }
 

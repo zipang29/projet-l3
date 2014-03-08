@@ -7,17 +7,19 @@ var ennemis = [];
 
 var joueur;
 
+var x; // Position de x actuelle pour le fond
+
+var xPerso; // Position de x actuelle du personnage
+
 /** 
 * Images 
 */
-var x; // Position de x actuelle pour le fond
-var xPerso; // Position de x actuelle du personnage
 var f1, f2, sol; // Image de fond 1, image de fond 2, image du sol
 var p0, p1, p2; // Personnage statique, personnage qui avance état 1, personnage qui avance état 2
 var coeur; // Image de coeur de vie
 var coeurPerdu; // Image d'un coeur de vie perdu
-// Les ennemis
-var bidon1, bidon2;
+/** Les ennemis */
+var bidon1, bidon2; // Bidon statique 1, Bidon statique 2
 
 /**
 * Fonction utilisée pour initialiser et lancer le jeu

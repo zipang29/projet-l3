@@ -1,8 +1,30 @@
 function Joueur() {
 
+	/**
+	* Permet de gérer l'animation du personnage
+	* 0 : personnage statique avant
+	* 1 : état 1 de l'animation avant
+	* 2 : état 2 de l'animation avant
+	* 3 : personnage statique arrière
+	* 4 : état 1 de l'animation arrière
+	* 5 : état 5 de l'animation arrière
+	*/
 	this.statutPersonnage = 0;
 	
-	this.vie = 3; // Points de vie restant (3 sur 5 au début du jeu)
+	/**
+	* Points de vie restant (3 sur 5 au début du jeu)
+	*/
+	this.vie = 3;
+	
+	/**
+	* Position du joueur sur l'axe x
+	*/
+	this.x;
+	
+	/**
+	* Position du joueur sur l'axe y
+	*/
+	this.y;
 	
 	this.update = function() {
 		if (statutPersonnage == 0) {
@@ -23,5 +45,9 @@ function Joueur() {
 		else {
 			context.drawImage(p5, xPerso, canvas.height - p1.height - sol.height);
 		}
+	};
+	
+	this.sauter = function() {
+		
 	};
 }
