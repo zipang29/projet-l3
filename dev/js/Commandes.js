@@ -4,51 +4,62 @@
 var reculer = false;
 
 /**
+* Permet de gérer la répétition des touches au clavier et de faire en sorte qu'il n'y ait plus une "pause" après le premier appuie sur une touche
+*/
+var timer = null;
+
+/**
 * Fonction anonyme qui s'exécute (évènement) à la pression d'une touche du clavier
 */
 document.onkeydown = function(e) {
-	// Flèche droite : on avance
-	if (e.keyCode == 39) {
-		recule = false;
-		if (statutPersonnage >= 0 && statutPersonnage < 2) {
-			statutPersonnage++;
-		}
-		else {
-			statutPersonnage = 0;
-		}
-		if (xPerso == 450) {
-			if (Math.abs(x - 10) < f1.width - canvas.width && Math.abs(x - 10) < f2.width - canvas.width) {
-				x -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche
+	if (timer) return;
+	timer = setInterval(function(){
+		// Flèche droite : on avance
+		if (e.keyCode == 39) {
+			recule = false;
+			if (statutPersonnage >= 0 && statutPersonnage < 2) {
+				statutPersonnage++;
+			}
+			else {
+				statutPersonnage = 0;
+			}
+			if (xPerso == 450) {
+				if (Math.abs(x - 10) < f1.width - canvas.width && Math.abs(x - 10) < f2.width - canvas.width) {
+					x -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche
+				}
+			}
+			else {
+				xPerso += 10;
 			}
 		}
-		else {
-			xPerso += 10;
-		}
-	}
-	// Flèche gauche : on recule
-	if (e.keyCode == 37) {
-		recule = true;
-		if (statutPersonnage >= 3 && statutPersonnage < 5) {
-			statutPersonnage++;
-		}
-		else {
-			statutPersonnage = 3;
-		}
-		if (xPerso <= 450 && xPerso > 0) {
-			xPerso -= 10;
-		}
-		else {
-			if (x + 10 <= 0) {
-				x += 10;
+		// Flèche gauche : on recule
+		if (e.keyCode == 37) {
+			recule = true;
+			if (statutPersonnage >= 3 && statutPersonnage < 5) {
+				statutPersonnage++;
+			}
+			else {
+				statutPersonnage = 3;
+			}
+			if (xPerso <= 450 && xPerso > 0) {
+				xPerso -= 10;
+			}
+			else {
+				if (x + 10 <= 0) {
+					x += 10;
+				}
 			}
 		}
-	}
+    }, 30); // Le dernier paramètre sert à modifier la vitesse d'avancement du joueur
+	
 };
 
 /**
 * Fonction anonyme qui s'exécute lorsqu'on relache une touche du clavier
 */
 document.onkeyup = function(e) {
+	clearTimeout(timer);
+    timer = null;
 	// Si on relache la flèche droite
 	if (e.keyCode == 39 || e.keyCode == 37) {
 		if (!recule) {
