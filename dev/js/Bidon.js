@@ -47,9 +47,9 @@ function Bidon(x1, x2) {
 	* @return true si il y a collision, false sinon
 	*/
 	this.collision = function(joueur) {
-		if (x + this.currentPos <= xPerso + p0.width) {
+		if (x + this.currentPos + 25 <= xPerso + p0.width) { // +25 pixels pour qu'on ne remarque pas l'espace transparent de l'image
 			joueur.vie--;
-			this.currentPos += 100;
+			this.currentPos += 50;
 		}
 	};
 }
