@@ -5,9 +5,24 @@
 */
 function Bidon(x1, x2) {
 
+	/**
+	* Position x de déplacement maximum sur la gauche
+	*/
 	this.x1 = x1;
+	
+	/**
+	* Position y de déplacement maximum sur la droite
+	*/
 	this.x2 = x2;
-	this.currentPos = x1;
+	
+	/**
+	* La position du bidon
+	*/
+	this.currentX = x1;
+	
+	/**
+	* Détermine si le bidon avance (de gauche à droite) ou si il recule (de droite à gauche)
+	*/
 	this.avance = true;
 
 	/**
@@ -15,16 +30,16 @@ function Bidon(x1, x2) {
 	* @exemple setInterval("monbidon.lancerAnnimation()", 10);
 	*/
 	this.lancerAnnimation = function() {
-		if (this.avance && this.currentPos < this.x2) {
-			this.currentPos += 1;
+		if (this.avance && this.currentX < this.x2) {
+			this.currentX += 1;
 		}
 		else {
-			this.currentPos -= 1;
+			this.currentX -= 1;
 		}
-		if (this.currentPos == x2) {
+		if (this.currentX == x2) {
 			this.avance = false;
 		}
-		else if (this.currentPos == x1) {
+		else if (this.currentX == x1) {
 			this.avance = true;
 		}
 	};
@@ -34,10 +49,10 @@ function Bidon(x1, x2) {
 	*/
 	this.update = function() {
 		if (this.avance) {
-			context.drawImage(bidon2, x + this.currentPos, canvas.height - bidon1.height - sol.height);
+			context.drawImage(bidon2, x + this.currentX, canvas.height - bidon1.height - sol.height);
 		}
 		else {
-			context.drawImage(bidon1, x + this.currentPos, canvas.height - bidon1.height - sol.height);
+			context.drawImage(bidon1, x + this.currentX, canvas.height - bidon1.height - sol.height);
 		}
 	};
 	
@@ -47,9 +62,9 @@ function Bidon(x1, x2) {
 	* @return true si il y a collision, false sinon
 	*/
 	this.collision = function(joueur) {
-		if (x + this.currentPos + 25 <= xPerso + p0.width) { // +25 pixels pour qu'on ne remarque pas l'espace transparent de l'image
+		if (x + this.currentX + 25 <= xPerso + p0.width) { // +25 pixels pour qu'on ne remarque pas l'espace transparent de l'image
 			joueur.vie--;
-			this.currentPos += 50;
+			this.currentX += 50;
 		}
 	};
 }

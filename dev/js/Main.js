@@ -9,7 +9,7 @@ var joueur;
 
 var x; // Position de x actuelle pour le fond
 
-var xPerso; // Position de x actuelle du personnage
+var xPerso; // Position de x actuelle du personnage => a implémenter dans la classe Joueur
 
 /** 
 * Images 

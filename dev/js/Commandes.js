@@ -54,7 +54,7 @@ document.onkeydown = function(e) {
 	
 	// On met ceci hors de la fonction de répétition car on ne doit pas pouvoir sauter plusieurs fois d'affiler (pas avant d'avoir toucher le sol à nouveau)
 	if (e.keyCode == 32) {
-		
+		setInterval("joueur.sauter()", 30);
 	}
 };
 
