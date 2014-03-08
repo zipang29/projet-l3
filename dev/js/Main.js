@@ -1,10 +1,11 @@
 //Variables globales à définir ici
 var canvas, context, currentLevel;
 
-var vie = 3; // Points de vie restant (3 sur 5 au début du jeu)
 var score = 0;
 
 var ennemis = [];
+
+var joueur;
 
 /** 
 * Images 
@@ -22,6 +23,7 @@ var bidon1, bidon2;
 * Fonction utilisée pour initialiser et lancer le jeu
 */
 function init() {
+	joueur = new Joueur();
 	x = 0;
 	xPerso = 50;
 	canvas = document.getElementById("elevator");

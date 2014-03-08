@@ -11,7 +11,7 @@ function Bidon(x1, x2) {
 	this.avance = true;
 
 	/**
-	* Permet de changer la position de l'énnemi. Cette méthode est faite pour être utilisée comme indiqué ci-après
+	* Permet de changer la position de l'énnemi. Cette méthode est faite pour être utilisée comme indiqué ci-après. Faire varier le temps d'actualisation de setInterval pour modifier la vitesse du bidon
 	* @exemple setInterval("monbidon.lancerAnnimation()", 10);
 	*/
 	this.lancerAnnimation = function() {
@@ -47,6 +47,9 @@ function Bidon(x1, x2) {
 	* @return true si il y a collision, false sinon
 	*/
 	this.collision = function(joueur) {
-	
+		if (x + this.currentPos <= xPerso + p0.width) {
+			joueur.vie--;
+			this.currentPos += 100;
+		}
 	};
 }

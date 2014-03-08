@@ -113,6 +113,7 @@ function loadEnnemis() {
 	bidon2.src = 'img/personnage/ennemis/bidon2.png';
 	b1 = new Bidon(400, 600);
 	setInterval("b1.lancerAnnimation()", 10);
+	setInterval("b1.collision(joueur)", 10);
 	ennemis.push(b1);
 	b2 = new Bidon(1400, 2000);
 	setInterval("b2.lancerAnnimation()", 10);
@@ -138,18 +139,28 @@ function loadInterface() {
 	coeurPerdu.src = 'img/objets/coeurVide.png';
 	context.font = '20px Arial';
 	context.fillText("Score : " + score, 830, 30);
-	
 }
 
 /**
 * Met à jour l'interface du jeu (score, coeurs de vie, bonus de santé...etc)
 */
 function updateInterface() {
-	context.drawImage(coeur, 10, 10);
+	var xTmp = 10;
+	for (var i=0; i<joueur.vie; i++) {
+		context.drawImage(coeur, xTmp, 10);
+		xTmp += 40;
+	}
+	if (joueur.vie < 5 && joueur.vie >= 0) {
+		for (var i=joueur.vie; i<5; i++) {
+			context.drawImage(coeurPerdu, xTmp, 10);
+			xTmp += 40;
+		}
+	}
+	/*context.drawImage(coeur, 10, 10);
 	context.drawImage(coeur, 50, 10);
 	context.drawImage(coeur, 90, 10);
 	context.drawImage(coeurPerdu, 130, 10);
-	context.drawImage(coeurPerdu, 170, 10);
+	context.drawImage(coeurPerdu, 170, 10);*/
 	context.fillText("Score : " + score, 830, 30);
 }
 
