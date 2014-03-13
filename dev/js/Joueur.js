@@ -1,6 +1,6 @@
 var v_x = 6; // Vitesse horizontale
 var v_saut = -6;
-var v_gravitation = 0.32;
+var v_gravitation = 0.1;//32
 var v_y = v_saut; // Vitesse verticale
 
 function Joueur(x) {
