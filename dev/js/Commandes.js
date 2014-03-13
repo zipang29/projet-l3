@@ -72,6 +72,6 @@ document.onkeyup = function(e) {
 		else {
 			joueur.statutPersonnage = 5;
 		}
-		context.drawImage(p1, xPerso, canvas.height - p1.height - sol.height);
+		context.drawImage(joueur.p1, xPerso, canvas.height - joueur.p1.height - sol.height);
 	}
 }

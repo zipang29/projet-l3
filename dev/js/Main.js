@@ -15,7 +15,6 @@ var xPerso; // Position de x actuelle du personnage => a implémenter dans la cl
 * Images 
 */
 var f1, f2, sol; // Image de fond 1, image de fond 2, image du sol
-var p0, p1, p2; // Personnage statique, personnage qui avance état 1, personnage qui avance état 2
 var coeur; // Image de coeur de vie
 var coeurPerdu; // Image d'un coeur de vie perdu
 /** Les ennemis */

@@ -30,7 +30,7 @@ function updateLevel(level) {
 		switch (level) {
 			case 1:
 				updateLevel1();
-				updatePersonnage();
+				joueur.update();
 				for (var i = 0, c = ennemis.length; i < c; i++) {
 					ennemis[i].update();
 				}
@@ -55,48 +55,6 @@ function updateLevel(level) {
 	}
 	else {
 		perdu();
-	}
-}
-
-/**
-* Gère le chargement des images du personnages et affiche le personnage statique
-*/
-function loadPersonnage() {
-	p0 = new Image();
-	p1 = new Image();
-	p2 = new Image();
-	p3 = new Image();
-	p4 = new Image();
-	p5 = new Image();
-	p0.src = 'img/personnage/joueur/0.png';
-	p1.src = 'img/personnage/joueur/1.png';
-	p2.src = 'img/personnage/joueur/2.png';
-	p3.src = 'img/personnage/joueur/3.png';
-	p4.src = 'img/personnage/joueur/4.png';
-	p5.src = 'img/personnage/joueur/5.png';
-}
-
-/**
-* Gère l'affichage du personnage (mise à jour) et son annimation
-*/
-function updatePersonnage() {
-	if (joueur.statutPersonnage == 0) {
-		context.drawImage(p0, xPerso, canvas.height - p1.height - sol.height);
-	}
-	else if (joueur.statutPersonnage == 1) {
-		context.drawImage(p1, xPerso, canvas.height - p1.height - sol.height);
-	}
-	else if (joueur.statutPersonnage == 2) {
-		context.drawImage(p2, xPerso, canvas.height - p1.height - sol.height);
-	}
-	else if (joueur.statutPersonnage == 3) {
-		context.drawImage(p3, xPerso, canvas.height - p1.height - sol.height);
-	}
-	else if (joueur.statutPersonnage == 4) {
-		context.drawImage(p4, xPerso, canvas.height - p1.height - sol.height);
-	}
-	else {
-		context.drawImage(p5, xPerso, canvas.height - p1.height - sol.height);
 	}
 }
 
@@ -177,7 +135,7 @@ function loadLevel1() {
     };
     // Toujours définir la source après ajout de l'écouteur
     f1.src = 'img/decors/lvl1/montagneArriere.png';
-	loadPersonnage();
+	joueur.load();
 	loadEnnemis();
 	loadInterface();
 }
