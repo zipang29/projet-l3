@@ -1,3 +1,8 @@
+var v_x = 6; // Vitesse horizontale
+var v_saut = -6;
+var v_gravitation = 0.32;
+var v_y = v_saut; // Vitesse verticale
+
 function Joueur(x) {
 
 	/**
@@ -99,11 +104,14 @@ function Joueur(x) {
 	};
 	
 	this.sauter = function() {
-		/*if (saut) {
-			
+		if (this.saut) {
+			this.x += v_x;
+			this.y += v_y;
+			v_y += v_gravitation;
+			if (this.y > canvas.height - this.p1.height - sol.height) {
+				v_y = v_saut;
+				this.saut = false;
+			}
 		}
-		else {
-		
-		}*/
 	};
 }
