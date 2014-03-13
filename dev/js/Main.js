@@ -9,8 +9,6 @@ var joueur;
 
 var x; // Position de x actuelle pour le fond
 
-var xPerso; // Position de x actuelle du personnage => a implémenter dans la classe Joueur
-
 /** 
 * Images 
 */
@@ -24,9 +22,8 @@ var bidon1, bidon2; // Bidon statique 1, Bidon statique 2
 * Fonction utilisée pour initialiser et lancer le jeu
 */
 function init() {
-	joueur = new Joueur();
+	joueur = new Joueur(50);
 	x = 0;
-	xPerso = 50;
 	canvas = document.getElementById("elevator");
     context = canvas.getContext("2d");
 	currentLevel = 1;

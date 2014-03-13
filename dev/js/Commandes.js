@@ -23,13 +23,13 @@ document.onkeydown = function(e) {
 			else {
 				joueur.statutPersonnage = 0;
 			}
-			if (xPerso == 450) {
+			if (joueur.x == 450) {
 				if (Math.abs(x - 10) < f1.width - canvas.width && Math.abs(x - 10) < f2.width - canvas.width) {
 					x -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche
 				}
 			}
 			else {
-				xPerso += 10;
+				joueur.x += 10;
 			}
 		}
 		// Flèche gauche : on recule
@@ -41,8 +41,8 @@ document.onkeydown = function(e) {
 			else {
 				joueur.statutPersonnage = 3;
 			}
-			if (xPerso <= 450 && xPerso > 0) {
-				xPerso -= 10;
+			if (joueur.x <= 450 && joueur.x > 0) {
+				joueur.x -= 10;
 			}
 			else {
 				if (x + 10 <= 0) {
@@ -72,6 +72,6 @@ document.onkeyup = function(e) {
 		else {
 			joueur.statutPersonnage = 5;
 		}
-		context.drawImage(joueur.p1, xPerso, canvas.height - joueur.p1.height - sol.height);
+		context.drawImage(joueur.p1, joueur.x, canvas.height - joueur.p1.height - sol.height);
 	}
 }

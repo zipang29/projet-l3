@@ -128,6 +128,9 @@ function loadLevel1() {
 			sol = new Image();
 			sol.onload = function () {
 				context.drawImage(this, 0, canvas.height - sol.height);
+				joueur.load();
+				loadEnnemis();
+				loadInterface();
 			}
 			sol.src = 'img/decors/lvl1/sol.png';
         };
@@ -135,9 +138,7 @@ function loadLevel1() {
     };
     // Toujours définir la source après ajout de l'écouteur
     f1.src = 'img/decors/lvl1/montagneArriere.png';
-	joueur.load();
-	loadEnnemis();
-	loadInterface();
+	
 }
 
 function updateLevel1() {

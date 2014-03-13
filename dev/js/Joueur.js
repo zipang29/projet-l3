@@ -1,4 +1,4 @@
-function Joueur(x, y) {
+function Joueur(x) {
 
 	/**
 	* Permet de gérer l'animation du personnage
@@ -54,7 +54,7 @@ function Joueur(x, y) {
 	/**
 	* Position du joueur sur l'axe y
 	*/
-	this.y = y;
+	this.y = 0;
 	
 	/**
 	* Détermine si un saut est en cours
@@ -71,6 +71,7 @@ function Joueur(x, y) {
 		this.p3.src = 'img/personnage/joueur/3.png';
 		this.p4.src = 'img/personnage/joueur/4.png';
 		this.p5.src = 'img/personnage/joueur/5.png';
+		this.y = canvas.height - this.p1.height - sol.height;
 	}
 	
 	/**
@@ -78,22 +79,22 @@ function Joueur(x, y) {
 	*/
 	this.update = function() {
 		if (this.statutPersonnage == 0) {
-			context.drawImage(this.p0, xPerso, canvas.height - this.p1.height - sol.height);
+			context.drawImage(this.p0, this.x, this.y);
 		}
 		else if (this.statutPersonnage == 1) {
-			context.drawImage(this.p1, xPerso, canvas.height - this.p1.height - sol.height);
+			context.drawImage(this.p1, this.x, this.y);
 		}
 		else if (this.statutPersonnage == 2) {
-			context.drawImage(this.p2, xPerso, canvas.height - this.p1.height - sol.height);
+			context.drawImage(this.p2, this.x, this.y);
 		}
 		else if (this.statutPersonnage == 3) {
-			context.drawImage(this.p3, xPerso, canvas.height - this.p1.height - sol.height);
+			context.drawImage(this.p3, this.x, this.y);
 		}
 		else if (this.statutPersonnage == 4) {
-			context.drawImage(this.p4, xPerso, canvas.height - this.p1.height - sol.height);
+			context.drawImage(this.p4, this.x, this.y);
 		}
 		else {
-			context.drawImage(this.p5, xPerso, canvas.height - this.p1.height - sol.height);
+			context.drawImage(this.p5, this.x, this.y);
 		}
 	};
 	
