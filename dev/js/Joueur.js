@@ -126,6 +126,9 @@ function Joueur(xFond) {
 				}
 			}
 			this.y += v_y;
+			if (this.y >= canvas.height - sol.height) {
+				this.y = canvas.height - sol.height;
+			}
 			v_y += v_gravitation;
 		}
 		if ((this.y >= canvas.height - this.p1.height - sol.height)) {

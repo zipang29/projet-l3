@@ -16,39 +16,41 @@ var saut;
 document.onkeydown = function(e) {
 	if (timer) return;
 	timer = setInterval(function(){
-		// Flèche droite : on avance
-		if (e.keyCode == 39) {
-			recule = false;
-			if (joueur.statutPersonnage >= 0 && joueur.statutPersonnage < 2) {
-				joueur.statutPersonnage++;
-			}
-			else {
-				joueur.statutPersonnage = 0;
-			}
-			if (joueur.x == 450) {
-				if (Math.abs(xFond - 10) < f1.width - canvas.width && Math.abs(xFond - 10) < f2.width - canvas.width) {
-					xFond -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche
+		if (!joueur.sautEnCours) {
+			// Flèche droite : on avance
+			if (e.keyCode == 39) {
+				recule = false;
+				if (joueur.statutPersonnage >= 0 && joueur.statutPersonnage < 2) {
+					joueur.statutPersonnage++;
+				}
+				else {
+					joueur.statutPersonnage = 0;
+				}
+				if (joueur.x == 450) {
+					if (Math.abs(xFond - 10) < f1.width - canvas.width && Math.abs(xFond - 10) < f2.width - canvas.width) {
+						xFond -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche
+					}
+				}
+				else {
+					joueur.x += 10;
 				}
 			}
-			else {
-				joueur.x += 10;
-			}
-		}
-		// Flèche gauche : on recule
-		if (e.keyCode == 37) {
-			recule = true;
-			if (joueur.statutPersonnage >= 3 && joueur.statutPersonnage < 5) {
-				joueur.statutPersonnage++;
-			}
-			else {
-				joueur.statutPersonnage = 3;
-			}
-			if (joueur.x <= 450 && joueur.x > 0) {
-				joueur.x -= 10;
-			}
-			else {
-				if (xFond + 10 <= 0) {
-					xFond += 10;
+			// Flèche gauche : on recule
+			if (e.keyCode == 37) {
+				recule = true;
+				if (joueur.statutPersonnage >= 3 && joueur.statutPersonnage < 5) {
+					joueur.statutPersonnage++;
+				}
+				else {
+					joueur.statutPersonnage = 3;
+				}
+				if (joueur.x <= 450 && joueur.x > 0) {
+					joueur.x -= 10;
+				}
+				else {
+					if (xFond + 10 <= 0) {
+						xFond += 10;
+					}
 				}
 			}
 		}
