@@ -69,6 +69,7 @@ function loadEnnemis() {
 	ennemis.push(b1);
 	b2 = new Bidon(1400, 2000);
 	setInterval("b2.lancerAnnimation()", 10);
+	setInterval("b2.collision(joueur)", 10);
 	ennemis.push(b2);
 }
 
