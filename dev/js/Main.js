@@ -7,7 +7,7 @@ var ennemis = [];
 
 var joueur;
 
-var x; // Position de x actuelle pour le fond
+var xFond; // Position de x actuelle pour le fond
 
 /** 
 * Images 
@@ -23,7 +23,7 @@ var bidon1, bidon2; // Bidon statique 1, Bidon statique 2
 */
 function init() {
 	joueur = new Joueur(50);
-	x = 0;
+	xFond = 0;
 	canvas = document.getElementById("elevator");
     context = canvas.getContext("2d");
 	currentLevel = 1;

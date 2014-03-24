@@ -3,7 +3,7 @@ var v_saut = -6;
 var v_gravitation = 0.1;//32
 var v_y = v_saut; // Vitesse verticale
 
-function Joueur(x) {
+function Joueur(xFond) {
 
 	/**
 	* Permet de gérer l'animation du personnage
@@ -54,7 +54,7 @@ function Joueur(x) {
 	/**
 	* Position du joueur sur l'axe x
 	*/
-	this.x = x;
+	this.x = xFond;
 	
 	/**
 	* Position du joueur sur l'axe y
@@ -112,16 +112,17 @@ function Joueur(x) {
 	* Animation pour le saut
 	*/
 	this.sauter = function() {
+		var ret = -1;
 		if (this.saut) {
-			if (joueur.x == 450) {
-				if (Math.abs(x - 10) < f1.width - canvas.width && Math.abs(x - 10) < f2.width - canvas.width) {
-					x -= v_x;
+			if (this.x == 450) {
+				if (Math.abs(xFond - 10) < f1.width - canvas.width && Math.abs(xFond - 10) < f2.width - canvas.width) {
+					ret = v_x;
 				}
 			}
 			else {
 				this.x += v_x;
-				if (joueur.x > 450) {
-					joueur.x = 450;
+				if (this.x > 450) {
+					this.x = 450;
 				}
 			}
 			this.y += v_y;
@@ -129,9 +130,10 @@ function Joueur(x) {
 		}
 		if ((this.y >= canvas.height - this.p1.height - sol.height)) {
 			v_y = v_saut;
-			this.sautEnCours = false
+			this.sautEnCours = false;
 			clearInterval(this.saut);
 			this.saut = null;
 		}
+		return ret;
 	};
 }

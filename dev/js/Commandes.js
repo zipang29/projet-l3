@@ -26,8 +26,8 @@ document.onkeydown = function(e) {
 				joueur.statutPersonnage = 0;
 			}
 			if (joueur.x == 450) {
-				if (Math.abs(x - 10) < f1.width - canvas.width && Math.abs(x - 10) < f2.width - canvas.width) {
-					x -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche
+				if (Math.abs(xFond - 10) < f1.width - canvas.width && Math.abs(xFond - 10) < f2.width - canvas.width) {
+					xFond -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche
 				}
 			}
 			else {
@@ -47,8 +47,8 @@ document.onkeydown = function(e) {
 				joueur.x -= 10;
 			}
 			else {
-				if (x + 10 <= 0) {
-					x += 10;
+				if (xFond + 10 <= 0) {
+					xFond += 10;
 				}
 			}
 		}
@@ -58,7 +58,12 @@ document.onkeydown = function(e) {
 	if (e.keyCode == 32) {
 		if (!joueur.sautEnCours) {
 			joueur.sautEnCours = true;
-			joueur.saut = setInterval("joueur.sauter()", 30);
+			joueur.saut = setInterval(function() {
+				var tmp = joueur.sauter();
+				if (tmp != -1) {
+					xFond -= tmp;
+				}
+			}, 30);
 			recule = false;
 		}
 	}

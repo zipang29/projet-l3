@@ -49,10 +49,10 @@ function Bidon(x1, x2) {
 	*/
 	this.update = function() {
 		if (this.avance) {
-			context.drawImage(bidon2, x + this.currentX, canvas.height - bidon1.height - sol.height);
+			context.drawImage(bidon2, xFond + this.currentX, canvas.height - bidon1.height - sol.height);
 		}
 		else {
-			context.drawImage(bidon1, x + this.currentX, canvas.height - bidon1.height - sol.height);
+			context.drawImage(bidon1, xFond + this.currentX, canvas.height - bidon1.height - sol.height);
 		}
 	};
 	
@@ -62,7 +62,7 @@ function Bidon(x1, x2) {
 	* @return true si il y a collision, false sinon
 	*/
 	this.collision = function(joueur) {
-		if (((x + this.currentX + 25) <= (joueur.x + joueur.p0.width)) && ((x + this.currentX + bidon1.height + 25) > (joueur.x + joueur.p0.width))) {
+		if (((xFond + this.currentX + 25) <= (joueur.x + joueur.p0.width)) && ((xFond + this.currentX + bidon1.height + 25) > (joueur.x + joueur.p0.width))) {
 			if ((500 - sol.height - bidon1.height) < (joueur.y + joueur.p0.height)) {
 				joueur.vie--;
 				this.currentX += 50;
