@@ -114,6 +114,7 @@ function Joueur(xFond) {
 	this.sauter = function() {
 		var ret = -1;
 		if (this.saut) {
+			joueur.statutPersonnage = 1;
 			if (this.x == 450) {
 				if (Math.abs(xFond - 10) < f1.width - canvas.width && Math.abs(xFond - 10) < f2.width - canvas.width) {
 					ret = this.v_x;
@@ -132,6 +133,7 @@ function Joueur(xFond) {
 			this.v_y += this.v_gravitation;
 		}
 		if ((this.y >= canvas.height - this.p1.height - sol.height)) {
+			joueur.statutPersonnage = 0;
 			this.v_y = this.v_saut;
 			this.sautEnCours = false;
 			clearInterval(this.saut);
