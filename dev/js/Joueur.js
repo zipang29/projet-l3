@@ -66,9 +66,9 @@ function Joueur(xFond) {
 	*/
 	this.sautEnCours = false;
 	
-	this.v_x = 1.5; // Vitesse horizontale
+	this.v_x = 5; // Vitesse horizontale
 	this.v_saut = -11;
-	this.v_gravitation = 0.25;//32
+	this.v_gravitation = 0.3;//32
 	this.v_y = this.v_saut; // Vitesse verticale
 	
 	/**
