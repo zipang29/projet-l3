@@ -8,6 +8,8 @@ var reculer = false;
 */
 var timer = null;
 
+var saut;
+
 /**
 * Fonction anonyme qui s'exécute (évènement) à la pression d'une touche du clavier
 */
@@ -54,8 +56,11 @@ document.onkeydown = function(e) {
 	
 	// On met ceci hors de la fonction de répétition car on ne doit pas pouvoir sauter plusieurs fois d'affiler (pas avant d'avoir toucher le sol à nouveau)
 	if (e.keyCode == 32) {
-		joueur.saut = true;
-		setInterval("joueur.sauter()", 30);
+		if (!joueur.sautEnCours) {
+			joueur.sautEnCours = true;
+			joueur.saut = setInterval("joueur.sauter()", 30);
+			recule = false;
+		}
 	}
 };
 

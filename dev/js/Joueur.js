@@ -62,9 +62,14 @@ function Joueur(x) {
 	this.y = 0;
 	
 	/**
-	* Détermine si un saut est en cours
+	* Permet de garder en mémoire le setInterval du saut pour pouvoir arrêter l'annimation
 	*/
 	this.saut = false;
+	
+	/**
+	* Détermine si un saut est en cours
+	*/
+	this.sautEnCours = false;
 	
 	/**
 	* Gère le chargement des images du personnages. Méthode à appeler en premier pour pouvoir afficher le personnage
@@ -103,15 +108,30 @@ function Joueur(x) {
 		}
 	};
 	
+	/**
+	* Animation pour le saut
+	*/
 	this.sauter = function() {
 		if (this.saut) {
-			this.x += v_x;
+			if (joueur.x == 450) {
+				if (Math.abs(x - 10) < f1.width - canvas.width && Math.abs(x - 10) < f2.width - canvas.width) {
+					x -= v_x;
+				}
+			}
+			else {
+				this.x += v_x;
+				if (joueur.x > 450) {
+					joueur.x = 450;
+				}
+			}
 			this.y += v_y;
 			v_y += v_gravitation;
-			if (this.y > canvas.height - this.p1.height - sol.height) {
-				v_y = v_saut;
-				this.saut = false;
-			}
+		}
+		if ((this.y >= canvas.height - this.p1.height - sol.height)) {
+			v_y = v_saut;
+			this.sautEnCours = false
+			clearInterval(this.saut);
+			this.saut = null;
 		}
 	};
 }
