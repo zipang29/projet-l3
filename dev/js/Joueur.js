@@ -1,8 +1,3 @@
-var v_x = 6; // Vitesse horizontale
-var v_saut = -6;
-var v_gravitation = 0.1;//32
-var v_y = v_saut; // Vitesse verticale
-
 function Joueur(xFond) {
 
 	/**
@@ -71,6 +66,11 @@ function Joueur(xFond) {
 	*/
 	this.sautEnCours = false;
 	
+	this.v_x = 1.5; // Vitesse horizontale
+	this.v_saut = -11;
+	this.v_gravitation = 0.25;//32
+	this.v_y = this.v_saut; // Vitesse verticale
+	
 	/**
 	* Gère le chargement des images du personnages. Méthode à appeler en premier pour pouvoir afficher le personnage
 	*/
@@ -116,23 +116,23 @@ function Joueur(xFond) {
 		if (this.saut) {
 			if (this.x == 450) {
 				if (Math.abs(xFond - 10) < f1.width - canvas.width && Math.abs(xFond - 10) < f2.width - canvas.width) {
-					ret = v_x;
+					ret = this.v_x;
 				}
 			}
 			else {
-				this.x += v_x;
+				this.x += this.v_x;
 				if (this.x > 450) {
 					this.x = 450;
 				}
 			}
-			this.y += v_y;
+			this.y += this.v_y;
 			if (this.y >= canvas.height - sol.height) {
 				this.y = canvas.height - sol.height;
 			}
-			v_y += v_gravitation;
+			this.v_y += this.v_gravitation;
 		}
 		if ((this.y >= canvas.height - this.p1.height - sol.height)) {
-			v_y = v_saut;
+			this.v_y = this.v_saut;
 			this.sautEnCours = false;
 			clearInterval(this.saut);
 			this.saut = null;
