@@ -16,36 +16,36 @@ var saut;
 document.onkeydown = function(e) {
 	if (timer) return;
 	timer = setInterval(function(){
-		if (!joueur.sautEnCours) {
+		if (!sautEnCours) {
 			// Flèche droite : on avance
 			if (e.keyCode == 39) {
 				recule = false;
-				if (joueur.statutPersonnage >= 0 && joueur.statutPersonnage < 2) {
-					joueur.statutPersonnage++;
+				if (statusPersonnage >= 0 && statusPersonnage < 2) {
+					statusPersonnage++;
 				}
 				else {
-					joueur.statutPersonnage = 0;
+					statusPersonnage = 0;
 				}
-				if (joueur.x == 450) {
+				if (xJoueur == 450) {
 					if (Math.abs(xFond - 10) < f1.width - canvas.width && Math.abs(xFond - 10) < f2.width - canvas.width) {
 						xFond -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche
 					}
 				}
 				else {
-					joueur.x += 10;
+					xJoueur += 10;
 				}
 			}
 			// Flèche gauche : on recule
 			if (e.keyCode == 37) {
 				recule = true;
-				if (joueur.statutPersonnage >= 3 && joueur.statutPersonnage < 5) {
-					joueur.statutPersonnage++;
+				if (statusPersonnage >= 3 && statusPersonnage < 5) {
+					statusPersonnage++;
 				}
 				else {
-					joueur.statutPersonnage = 3;
+					statusPersonnage = 3;
 				}
-				if (joueur.x <= 450 && joueur.x > 0) {
-					joueur.x -= 10;
+				if (xJoueur <= 450 && xJoueur > 0) {
+					xJoueur -= 10;
 				}
 				else {
 					if (xFond + 10 <= 0) {
@@ -58,10 +58,10 @@ document.onkeydown = function(e) {
 	
 	// On met ceci hors de la fonction de répétition car on ne doit pas pouvoir sauter plusieurs fois d'affiler (pas avant d'avoir toucher le sol à nouveau)
 	if (e.keyCode == 32) {
-		if (!joueur.sautEnCours) {
-			joueur.sautEnCours = true;
-			joueur.saut = setInterval(function() {
-				var tmp = joueur.sauter();
+		if (!sautEnCours) {
+			sautEnCours = true;
+			saut = setInterval(function() {
+				var tmp = sauter();
 				if (tmp != -1) {
 					xFond -= tmp;
 				}
@@ -80,11 +80,11 @@ document.onkeyup = function(e) {
 	// Si on relache la flèche droite
 	if (e.keyCode == 39 || e.keyCode == 37) {
 		if (!recule) {
-			joueur.statutPersonnage = 0; // On affiche l'image du personnage qui ne marche pas
+			statusPersonnage = 0; // On affiche l'image du personnage qui ne marche pas
 		}
 		else {
-			joueur.statutPersonnage = 5;
+			statusPersonnage = 5;
 		}
-		context.drawImage(joueur.p1, joueur.x, canvas.height - joueur.p1.height - sol.height);
+		context.drawImage(p1, xJoueur, canvas.height - p1.height - sol.height);
 	}
 }

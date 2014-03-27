@@ -61,10 +61,10 @@ function Bidon(x1, x2) {
 	* @Joueur joueur Un objet de type joueur
 	* @return true si il y a collision, false sinon
 	*/
-	this.collision = function(joueur) {
-		if (((xFond + this.currentX + 25) <= (joueur.x + joueur.p0.width)) && ((xFond + this.currentX + bidon1.height + 25) > (joueur.x + joueur.p0.width))) {
-			if ((500 - sol.height - bidon1.height) < (joueur.y + joueur.p0.height)) {
-				joueur.vie--;
+	this.collision = function() {
+		if (((xFond + this.currentX + 25) <= (xJoueur + p0.width)) && ((xFond + this.currentX + bidon1.height + 25) > (xJoueur + p0.width))) {
+			if ((500 - sol.height - bidon1.height) < (yJoueur + p0.height)) {
+				vieJoueur--;
 				this.currentX += 50;
 			}
 		}

@@ -26,11 +26,11 @@ function loadLevel(level) {
 }
 
 function updateLevel(level) {
-	if (joueur.vie > 0) {
+	if (vieJoueur > 0) {
 		switch (level) {
 			case 1:
 				updateLevel1();
-				joueur.update();
+				annimJoueur();
 				for (var i = 0, c = ennemis.length; i < c; i++) {
 					ennemis[i].update();
 				}
@@ -99,12 +99,12 @@ function loadInterface() {
 */
 function updateInterface() {
 	var xTmp = 10;
-	for (var i=0; i<joueur.vie; i++) {
+	for (var i=0; i<vieJoueur; i++) {
 		context.drawImage(coeur, xTmp, 10);
 		xTmp += 40;
 	}
-	if (joueur.vie < 5 && joueur.vie >= 0) {
-		for (var i=joueur.vie; i<5; i++) {
+	if (vieJoueur < 5 && vieJoueur >= 0) {
+		for (var i=vieJoueur; i<5; i++) {
 			context.drawImage(coeurPerdu, xTmp, 10);
 			xTmp += 40;
 		}
@@ -129,7 +129,7 @@ function loadLevel1() {
 			sol = new Image();
 			sol.onload = function () {
 				context.drawImage(this, 0, canvas.height - sol.height);
-				joueur.load();
+				createJoueur(50);
 				loadEnnemis();
 				loadInterface();
 			}
@@ -139,7 +139,6 @@ function loadLevel1() {
     };
     // Toujours définir la source après ajout de l'écouteur
     f1.src = 'img/decors/lvl1/montagneArriere.png';
-	
 }
 
 function updateLevel1() {

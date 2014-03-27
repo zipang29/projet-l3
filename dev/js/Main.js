@@ -22,7 +22,6 @@ var bidon1, bidon2; // Bidon statique 1, Bidon statique 2
 * Fonction utilisée pour initialiser et lancer le jeu
 */
 function init() {
-	joueur = new Joueur(50);
 	xFond = 0;
 	canvas = document.getElementById("elevator");
     context = canvas.getContext("2d");
