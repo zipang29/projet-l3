@@ -1,4 +1,9 @@
 /**
+* temps de jeu du Joueur 
+*/
+var chrono = 0.0 ;
+
+/**
 * Charge le niveau correspondant
 * @var int level Le numéro du niveau à charger
 */
@@ -31,6 +36,7 @@ function updateLevel(level) {
 			case 1:
 				updateLevel1();
 				annimJoueur();
+				chrono += 0.003 ; // incremente le chrono de 30 milisecondes
 				for (var i = 0, c = listeBidon.length; i < c; i++) {
 					updateBidon(i);
 				}
@@ -98,6 +104,8 @@ function loadInterface() {
 	coeurPerdu.src = 'img/objets/coeurVide.png';
 	context.font = '20px Arial';
 	context.fillText("Score : " + score, 830, 30);
+	context.fillText("Temps : " + String.fromCharCode(chrono), 830, 50);
+
 }
 
 /**
@@ -116,6 +124,8 @@ function updateInterface() {
 		}
 	}
 	context.fillText("Score : " + score, 830, 30);
+	context.fillText("Temps : " + chrono, 830, 50);
+
 }
 
 /**
