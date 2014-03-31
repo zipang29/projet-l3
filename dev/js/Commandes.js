@@ -63,14 +63,20 @@ document.onkeydown = function(e) {
 				else {
 					statusPersonnage = 3;
 				}
-				if (xJoueur <= 450 && xJoueur > 0) {
-					xJoueur -= 10;
+				/*if (xFond - xJoueur == 450) {
+					alert("test");
+					xFond += 10;
 				}
-				else {
+				else {*/
 					if (xFond + 10 <= 0) {
 						xFond += 10;
 					}
-				}
+					else {
+						if (xJoueur - 10 > 0) {
+							xJoueur -= 10;
+						}
+					}
+				//}
 			}
 		}
     }, 30); // Le dernier paramètre sert à modifier la vitesse d'avancement du joueur
