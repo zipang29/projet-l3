@@ -36,6 +36,11 @@ var saut;
 */
 var sautEnCours;
 
+/**
+* Boolean (peut valoir null si aucun saut n'est en cours) : true si le saut est en avant, false, si il est en arrière
+*/
+var sautAvant;
+
 //Variables de configuration du saut
 var v_x = 5; // Vitesse horizontale
 var v_saut = -11;
@@ -50,6 +55,7 @@ function createJoueur(xFond) {
 	xJoueur = xFond;
 	sautEnCours = false;
 	saut = false;
+	sautAvant = null;
 };
 
 function loadImg() {
@@ -110,7 +116,7 @@ function annimJoueur() {
 function sauter() {
 	var ret = null;
 	if (saut) {
-		if (statusPersonnage == 0 || statusPersonnage == 1 || statusPersonnage == 2) {
+		if (sautAvant) {
 			statusPersonnage = 1;
 			if (xJoueur == 450) {
 				if (Math.abs(xFond - 10) < f1.width - canvas.width && Math.abs(xFond - 10) < f2.width - canvas.width) {
@@ -123,11 +129,7 @@ function sauter() {
 					xJoueur = 450;
 				}
 			}
-			yJoueur += v_y;
-			if (yJoueur >= canvas.height - sol.height) {
-				yJoueur = canvas.height - sol.height;
-			}
-			v_y += v_gravitation;
+			
 		}
 		else {
 			statusPersonnage = 4;
@@ -142,12 +144,12 @@ function sauter() {
 					xJoueur = 450;
 				}
 			}
-			yJoueur += v_y;
-			if (yJoueur >= canvas.height - sol.height) {
-				yJoueur = canvas.height - sol.height;
-			}
-			v_y += v_gravitation;
 		}
+		yJoueur += v_y;
+		if (yJoueur >= canvas.height - sol.height) {
+			yJoueur = canvas.height - sol.height;
+		}
+		v_y += v_gravitation;
 	}
 	if ((yJoueur >= canvas.height - p1.height - sol.height)) {
 		statusPersonnage = 0;

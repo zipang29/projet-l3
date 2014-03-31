@@ -24,6 +24,12 @@ document.onkeydown = function(e) {
 				touchePrecedente = 32;
 			}
 			sautEnCours = true;
+			if (statusPersonnage == 0 || statusPersonnage == 1 || statusPersonnage == 2) {
+				sautAvant = true;
+			}
+			else {
+				sautAvant = false;
+			}
 			saut = setInterval(function() {
 				var tmp = sauter();
 				if (tmp != null) {
