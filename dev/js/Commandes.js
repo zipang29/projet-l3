@@ -26,7 +26,7 @@ document.onkeydown = function(e) {
 			sautEnCours = true;
 			saut = setInterval(function() {
 				var tmp = sauter();
-				if (tmp != -1) {
+				if (tmp != null) {
 					xFond -= tmp;
 				}
 			}, 30);
