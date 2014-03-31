@@ -107,7 +107,12 @@ function collisionBidon(bidonNumber) {
 		if ((500 - sol.height - bidon1.height) < (yJoueur + p0.height)) {
 			vieJoueur--;
 			score -= 50 ;
-			b['currentX'] += 50;
+			if (xJoueur < xFond + b['currentX']) {
+				b['currentX'] += 50;
+			}
+			else {
+				b['currentX'] -= 50;
+			}
 		}
 	}
 }
