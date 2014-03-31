@@ -196,4 +196,6 @@ function loadLevel5() {
 */
 function perdu() {
 	context.fillText("Perdu !", 500, 250);
+	context.fillText("Score : " + score, 830, 30);
+	context.fillText("Temps : " + chrono.toFixed(2), 830, 50);
 }
