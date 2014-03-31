@@ -126,6 +126,7 @@ function sauter() {
 		sautEnCours = false;
 		clearInterval(saut);
 		saut = null;
+		yJoueur = canvas.height - p1.height - sol.height;
 	}
 	return ret;
 };
