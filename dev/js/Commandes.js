@@ -8,6 +8,9 @@ var reculer = false;
 */
 var timer = null;
 
+/**
+* Détermine si un saut est en cours
+*/
 var saut;
 
 /**
@@ -17,6 +20,9 @@ document.onkeydown = function(e) {
 	// On met ceci hors de la fonction de répétition car on ne doit pas pouvoir sauter plusieurs fois d'affiler (pas avant d'avoir toucher le sol à nouveau)
 	if (e.keyCode == 32 || (e.keyCode == 32 && timer != null)) {
 		if (!sautEnCours) {
+			if (e.keyCode == 32 && timer != null) {
+				touchePrecedente = 32;
+			}
 			sautEnCours = true;
 			saut = setInterval(function() {
 				var tmp = sauter();
