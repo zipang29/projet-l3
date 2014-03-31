@@ -14,6 +14,19 @@ var saut;
 * Fonction anonyme qui s'exécute (évènement) à la pression d'une touche du clavier
 */
 document.onkeydown = function(e) {
+	// On met ceci hors de la fonction de répétition car on ne doit pas pouvoir sauter plusieurs fois d'affiler (pas avant d'avoir toucher le sol à nouveau)
+	if (e.keyCode == 32 || (e.keyCode == 32 && timer != null)) {
+		if (!sautEnCours) {
+			sautEnCours = true;
+			saut = setInterval(function() {
+				var tmp = sauter();
+				if (tmp != -1) {
+					xFond -= tmp;
+				}
+			}, 30);
+			recule = false;
+		}
+	}
 	if (timer) return;
 	timer = setInterval(function(){
 		if (!sautEnCours) {
@@ -55,20 +68,6 @@ document.onkeydown = function(e) {
 			}
 		}
     }, 30); // Le dernier paramètre sert à modifier la vitesse d'avancement du joueur
-	
-	// On met ceci hors de la fonction de répétition car on ne doit pas pouvoir sauter plusieurs fois d'affiler (pas avant d'avoir toucher le sol à nouveau)
-	if (e.keyCode == 32) {
-		if (!sautEnCours) {
-			sautEnCours = true;
-			saut = setInterval(function() {
-				var tmp = sauter();
-				if (tmp != -1) {
-					xFond -= tmp;
-				}
-			}, 30);
-			recule = false;
-		}
-	}
 };
 
 /**
