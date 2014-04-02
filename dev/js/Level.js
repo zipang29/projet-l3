@@ -72,10 +72,7 @@ function loadEnnemis() {
 	addBidon(5000, 5200);
 	addBidon(5300, 5400);
 	addBidon(7000, 7300);
-	for (var i=0; i<listeBidon.length; i++) {
-		setInterval("lancerAnnimationBidon("+i+")", 10);
-		setInterval("collisionBidon("+i+")", 10);
-	}
+	lancerBidon();
 }
 
 /**

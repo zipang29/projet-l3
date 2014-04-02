@@ -59,7 +59,7 @@ function addBidon(x1, x2) {
 * @param bidonNumber int Le numéro du bidon dans listeBidon
 * @exemple setInterval("monbidon.lancerAnnimation()", 10);
 */
-function lancerAnnimationBidon(bidonNumber) {
+function annimationBidon(bidonNumber) {
 	var b = listeBidon[bidonNumber]
 	if (b['avance'] && b['currentX'] < b['x2']) {
 		b['currentX'] += 1;
@@ -135,3 +135,9 @@ function collisionBidon(bidonNumber) {
 	}
 }
 
+function lancerBidon() {
+	for (var i=0; i<listeBidon.length; i++) {
+		setInterval("annimationBidon("+i+")", 10);
+		setInterval("collisionBidon("+i+")", 10);
+	}
+}
