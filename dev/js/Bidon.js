@@ -1,5 +1,7 @@
 var listeBidon = new Array();
 
+var bidon0, bidon1, bidon2, bidon3, bidon4, bidon5; // Bidon statique 1, ...
+
 /**
 * Charge les images pour les énnemis de type bidon
 */
