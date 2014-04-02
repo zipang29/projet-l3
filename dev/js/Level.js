@@ -38,9 +38,7 @@ function updateLevel(level) {
 				annimJoueur();
 				collisionBidon(4);
 				chrono += 0.003 ; // incremente le chrono de 30 milisecondes
-				for (var i = 0, c = listeBidon.length; i < c; i++) {
-					updateBidon(i);
-				}
+				updateBidon();
 				updateInterface();
 			break;
 			case 2:

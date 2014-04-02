@@ -81,35 +81,37 @@ function annimationBidon(bidonNumber) {
 * Met à jour la position et l'image du bidon
 * @param bidonNumber int Le numéro du bidon dans listeBidon
 */
-function updateBidon(bidonNumber) {
-	var b = listeBidon[bidonNumber];
-	var y = canvas.height - bidon1.height - sol.height;
-	if (b['avance']) {
-		if (b['annimation'] == 0) {
-			context.drawImage(bidon0, xFond + b['currentX'], y);
-			b['annimation']++;
+function updateBidon() {
+	for (var i = 0, c = listeBidon.length; i < c; i++) {
+		var b = listeBidon[i];
+		var y = canvas.height - bidon1.height - sol.height;
+		if (b['avance']) {
+			if (b['annimation'] == 0) {
+				context.drawImage(bidon0, xFond + b['currentX'], y);
+				b['annimation']++;
+			}
+			else if (b['annimation'] == 1) {
+				context.drawImage(bidon1, xFond + b['currentX'], y);
+				b['annimation']++;
+			}
+			else if (b['annimation'] == 2) {
+				context.drawImage(bidon2, xFond + b['currentX'], y);
+				b['annimation'] = 0;
+			}
 		}
-		else if (b['annimation'] == 1) {
-			context.drawImage(bidon1, xFond + b['currentX'], y);
-			b['annimation']++;
-		}
-		else if (b['annimation'] == 2) {
-			context.drawImage(bidon2, xFond + b['currentX'], y);
-			b['annimation'] = 0;
-		}
-	}
-	else {
-		if (b['annimation'] == 3) {
-			context.drawImage(bidon3, xFond + b['currentX'], y);
-			b['annimation']++;
-		}
-		else if (b['annimation'] == 4) {
-			context.drawImage(bidon4, xFond + b['currentX'], y);
-			b['annimation']++;
-		}
-		else if (b['annimation'] == 5) {
-			context.drawImage(bidon5, xFond + b['currentX'], y);
-			b['annimation'] = 3;
+		else {
+			if (b['annimation'] == 3) {
+				context.drawImage(bidon3, xFond + b['currentX'], y);
+				b['annimation']++;
+			}
+			else if (b['annimation'] == 4) {
+				context.drawImage(bidon4, xFond + b['currentX'], y);
+				b['annimation']++;
+			}
+			else if (b['annimation'] == 5) {
+				context.drawImage(bidon5, xFond + b['currentX'], y);
+				b['annimation'] = 3;
+			}
 		}
 	}
 }
