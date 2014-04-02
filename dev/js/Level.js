@@ -36,6 +36,7 @@ function updateLevel(level) {
 			case 1:
 				updateLevel1();
 				annimJoueur();
+				collisionBidon(4);
 				chrono += 0.003 ; // incremente le chrono de 30 milisecondes
 				for (var i = 0, c = listeBidon.length; i < c; i++) {
 					updateBidon(i);
@@ -65,24 +66,16 @@ function updateLevel(level) {
 }
 
 function loadEnnemis() {
-	bidon0 = new Image();
-	bidon0.src = 'img/personnage/ennemis/bidon0.png';
-	bidon1 = new Image();
-	bidon1.src = 'img/personnage/ennemis/bidon1.png';
-	bidon2 = new Image();
-	bidon2.src = 'img/personnage/ennemis/bidon2.png';
-	bidon3 = new Image();
-	bidon3.src = 'img/personnage/ennemis/bidon3.png';
-	bidon4 = new Image();
-	bidon4.src = 'img/personnage/ennemis/bidon4.png';
-	bidon5 = new Image();
-	bidon5.src = 'img/personnage/ennemis/bidon5.png';
+	initialiseBidon();
 	addBidon(400, 600);
-	setInterval("lancerAnnimationBidon(0)", 10);
-	setInterval("collisionBidon(0)", 10);
 	addBidon(1400, 2000);
-	setInterval("lancerAnnimationBidon(1)", 10);
-	setInterval("collisionBidon(1)", 10);
+	addBidon(5000, 5200);
+	addBidon(5300, 5400);
+	addBidon(7000, 7300);
+	for (var i=0; i<listeBidon.length; i++) {
+		setInterval("lancerAnnimationBidon("+i+")", 10);
+		setInterval("collisionBidon("+i+")", 10);
+	}
 }
 
 /**

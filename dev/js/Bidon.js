@@ -1,6 +1,24 @@
 var listeBidon = new Array();
 
 /**
+* Charge les images pour les énnemis de type bidon
+*/
+function initialiseBidon() {
+	bidon0 = new Image();
+	bidon0.src = 'img/personnage/ennemis/bidon0.png';
+	bidon1 = new Image();
+	bidon1.src = 'img/personnage/ennemis/bidon1.png';
+	bidon2 = new Image();
+	bidon2.src = 'img/personnage/ennemis/bidon2.png';
+	bidon3 = new Image();
+	bidon3.src = 'img/personnage/ennemis/bidon3.png';
+	bidon4 = new Image();
+	bidon4.src = 'img/personnage/ennemis/bidon4.png';
+	bidon5 = new Image();
+	bidon5.src = 'img/personnage/ennemis/bidon5.png';
+}
+
+/**
 * Permet d'ajouter un nouveau bidon entre la position x1 et x2
 * x1 : la position de départ du bidon
 * x2 : le position maximale de déplacement du bidon
