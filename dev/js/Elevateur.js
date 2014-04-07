@@ -7,3 +7,6 @@ function initElevateur() {
 	imgPlateforme.src = "img/objets/interactions/elevateur.png";
 }
 
+function addElevateur(positionStartX, positionStartY) {
+
+}

@@ -39,6 +39,7 @@ function updateLevel(level) {
 				collisionBidon(4);
 				chrono += 0.003 ; // incremente le chrono de 30 milisecondes
 				updateBidon();
+				displayAllPlateformes();
 				updateInterface();
 			break;
 			case 2:
@@ -117,6 +118,14 @@ function updateInterface() {
 }
 
 /**
+* Ajoute les plateformes du niveau 1
+*/
+function addAllPlateformesLevel1() {
+	initPlateforme();
+	addPlateforme(1000, 200);
+}
+
+/**
 * Charge les éléments du niveau 1 du jeu
 */
 function loadLevel1() {
@@ -135,6 +144,7 @@ function loadLevel1() {
 				context.drawImage(this, 0, canvas.height - sol.height);
 				createJoueur(50);
 				loadEnnemis();
+				addAllPlateformesLevel1();
 				loadInterface();
 			}
 			sol.src = 'img/decors/lvl1/sol.png';
