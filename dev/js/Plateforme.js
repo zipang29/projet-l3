@@ -1,5 +1,11 @@
+/**
+* L'image des plateformes
+*/
 var imgPlateforme;
 
+/**
+* La liste des plateformes
+*/
 var listePlateforme = new Array();
 
 /**

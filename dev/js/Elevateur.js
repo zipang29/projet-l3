@@ -1,5 +1,11 @@
+/**
+* L'image de l'élévateur
+*/
 var imgElevateur;
 
+/**
+* La liste des élévateurs actuels
+*/
 var listeElevateurs = new Array();
 
 /**
@@ -19,5 +25,16 @@ function initElevateur() {
 * @var direction Un boolean est attendu. <code>true</code> si l'animation est sur l'axe x, <code>false</code> si il est sur l'axe y
 */
 function addElevateur(x1, y1, x2, y2, direction) {
-
+	listeElevateurs[listeElevateurs.length] = new Array();
+	var elevateur = listeElevateurs[listeElevateurs.length - 1];
+	elevateur['x1'] = x1;
+	elevateur['y1'] = y1;
+	elevateur['x2'] = x2;
+	elevateur['y2'] = y2;
+	elevateur['direction'] = direction;
+	
+	/**
+	* Détermine si l'élévateur est en cours de déplacement ou non
+	*/
+	elevateur['actif'] = false;
 }
