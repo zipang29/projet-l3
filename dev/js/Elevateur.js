@@ -30,12 +30,19 @@ function addElevateur(x1, y1, x2, y2) {
 	elevateur['y1'] = y1;
 	elevateur['x2'] = x2;
 	elevateur['y2'] = y2;
+	elevateur['x'] = x1;
+	elevateur['y'] = y1;
 	
 	/**
 	* Détermine si l'élévateur est en cours de déplacement ou non
 	*/
 	elevateur['actif'] = false;
-}
+	
+	/**
+	* Détermine la direction de l'élévateur : true = vers l'avant ou le haut, false, vers l'arrière ou le bas
+	*/
+	elevateur['direction'] = true;
+};
 
 /**
 * Permet d'afficher tout les élévateurs
@@ -44,6 +51,39 @@ function displayAllElevateurs() {
 	var elevateur;
 	for (var i=0; i<listeElevateurs.length; i++) {
 		elevateur = listeElevateurs[i];
-		context.drawImage(imgElevateur, xFond + elevateur['x1'], elevateur['y1']);
+		context.drawImage(imgElevateur, xFond + elevateur['x'], elevateur['y']);
 	}
-}
+};
+
+function deplacement(elevateurNumber) {
+	var e = listeElevateurs[elevateurNumber];
+	e['actif'] = true;
+	if (e['direction'] == false) {
+		if (e['x'] < e['x1']) {
+			e['x'] += 1;
+		}
+		if (e['y'] < e['y1']) {
+			e['y'] += 1;
+		}
+		if (e['x'] == e['x1'] && e['y'] == e['y1']) {
+			e['direction'] = true;
+		}
+	}
+	if (e['direction'] == true) {
+		if (e['x'] > e['x2']) {
+			e['x'] -= 1;
+		}
+		if (e['y'] > e['y2']) {
+			e['y'] -= 1;
+		}
+		if (e['x'] == e['x2'] && e['y'] == e['y2']) {
+			e['direction'] = false;
+		}
+	}
+};
+
+function lancerElevateurs() {
+	for (var i=0; i<listeElevateurs.length; i++) {
+		setInterval("deplacement("+i+")", 10);
+	}
+};
