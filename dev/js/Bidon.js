@@ -139,6 +139,9 @@ function collisionBidon(bidonNumber) {
 	}
 }
 
+/**
+* Lance les annimations et les collisions pour tout les bidons qui ont étés ajoutés
+*/
 function lancerBidon() {
 	for (var i=0; i<listeBidon.length; i++) {
 		setInterval("annimationBidon("+i+")", 10);

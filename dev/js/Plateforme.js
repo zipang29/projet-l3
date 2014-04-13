@@ -14,7 +14,7 @@ var listePlateforme = new Array();
 function initPlateforme() {
 	imgPlateforme = new Image();
 	imgPlateforme.src = "img/objets/interactions/plateforme.png";
-}
+};
 
 /**
 * Ajoute une plateforme au niveau
@@ -26,7 +26,7 @@ function addPlateforme(x, y) {
 	var plateforme = listePlateforme[listePlateforme.length-1];
 	plateforme['x'] = x;
 	plateforme['y'] = y;
-}
+};
 
 /**
 * Permet d'afficher toutes les plateformes
@@ -37,4 +37,4 @@ function displayAllPlateformes() {
 		plateforme = listePlateforme[i];
 		context.drawImage(imgPlateforme, xFond + plateforme['x'], plateforme['y']);
 	}
-}
+};

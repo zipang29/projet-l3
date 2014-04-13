@@ -38,3 +38,14 @@ function addElevateur(x1, y1, x2, y2, direction) {
 	*/
 	elevateur['actif'] = false;
 }
+
+/**
+* Permet d'afficher tout les élévateurs
+*/
+/*function displayAllPlateformes() {
+	var elevateur;
+	for (var i=0; i<listeElevateurs.length; i++) {
+		elevateur = listeElevateurs[i];
+		context.drawImage(imgElevateur, xFond + elevateur['x1'], elevateur['y1']);
+	}
+}*/
