@@ -39,6 +39,7 @@ function updateLevel(level) {
 				collisionBidon(4);
 				chrono += 0.003 ; // incremente le chrono de 30 milisecondes
 				updateBidon();
+				displayAllElevateurs();
 				displayAllPlateformes();
 				updateInterface();
 			break;
@@ -121,7 +122,9 @@ function updateInterface() {
 * Ajoute les plateformes du niveau 1
 */
 function addAllPlateformesLevel1() {
+	initElevateur();
 	initPlateforme();
+	addElevateur(1000-195, canvas.height - sol.height, 1000-195, 200);//position de la plateforme (ligne ci-après) moins la largeur de l'image d'un élévateur
 	addPlateforme(1000, 200);
 }
 
