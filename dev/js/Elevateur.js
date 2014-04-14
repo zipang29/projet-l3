@@ -41,7 +41,7 @@ function addElevateur(x1, y1, x2, y2) {
 	/**
 	* Détermine la direction de l'élévateur : true = vers l'avant ou le haut, false, vers l'arrière ou le bas
 	*/
-	elevateur['direction'] = true;
+	elevateur['direction'] = false;
 };
 
 /**
@@ -57,27 +57,43 @@ function displayAllElevateurs() {
 
 function deplacement(elevateurNumber) {
 	var e = listeElevateurs[elevateurNumber];
-	e['actif'] = true;
-	if (e['direction'] == false) {
-		if (e['x'] < e['x1']) {
-			e['x'] += 1;
+	if (e['actif'] == true) {
+		if (e['direction'] == false) {
+			if (e['x'] < e['x1']) {
+				e['x'] += 1;
+			}
+			if (e['y'] < e['y1']) {
+				e['y'] += 1;
+				yJoueur += 1;
+			}
+			if (e['x'] == e['x1'] && e['y'] == e['y1']) {
+				e['direction'] = false;
+				e['actif'] = false;
+			}
 		}
-		if (e['y'] < e['y1']) {
-			e['y'] += 1;
-		}
-		if (e['x'] == e['x1'] && e['y'] == e['y1']) {
-			e['direction'] = true;
+		if (e['direction'] == true) {
+			if (e['x'] > e['x2']) {
+				e['x'] -= 1;
+			}
+			if (e['y'] > e['y2']) {
+				e['y'] -= 1;
+				yJoueur -= 1;
+			}
+			if (e['x'] == e['x2'] && e['y'] == e['y2']) {
+				e['direction'] = true;
+				e['actif'] = false;
+			}
 		}
 	}
-	if (e['direction'] == true) {
-		if (e['x'] > e['x2']) {
-			e['x'] -= 1;
-		}
-		if (e['y'] > e['y2']) {
-			e['y'] -= 1;
-		}
-		if (e['x'] == e['x2'] && e['y'] == e['y2']) {
-			e['direction'] = false;
+	else {
+		if (Math.abs(xFond) + xJoueur > e['x1'] && Math.abs(xFond) + xJoueur < e['x2'] + imgElevateur.width) {
+			e['actif'] = true;
+			if (e['direction'] == false) {
+				e['direction'] = true;
+			}
+			else {
+				e['direction'] = false;
+			}
 		}
 	}
 };
