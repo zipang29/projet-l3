@@ -42,6 +42,11 @@ function addElevateur(x1, y1, x2, y2) {
 	* Détermine la direction de l'élévateur : true = vers l'avant ou le haut, false, vers l'arrière ou le bas
 	*/
 	elevateur['direction'] = false;
+	
+	/**
+	* Permet de gérer le setInterval correspondant à l'élévateur
+	*/
+	elevateur['timeout'] = null;
 };
 
 /**
@@ -69,6 +74,9 @@ function deplacement(elevateurNumber) {
 			if (e['x'] == e['x1'] && e['y'] == e['y1']) {
 				e['direction'] = false;
 				e['actif'] = false;
+				clearTimeout(e['timeout']);
+				e['timeout'] = null;
+				setTimeout("deplacement("+elevateurNumber+")", 1000);
 			}
 		}
 		if (e['direction'] == true) {
@@ -82,12 +90,18 @@ function deplacement(elevateurNumber) {
 			if (e['x'] == e['x2'] && e['y'] == e['y2']) {
 				e['direction'] = true;
 				e['actif'] = false;
+				clearTimeout(e['timeout']);
+				e['timeout'] = null;
+				setTimeout("deplacement("+elevateurNumber+")", 1000);
 			}
 		}
 	}
 	else {
 		if (Math.abs(xFond) + xJoueur > e['x1'] && Math.abs(xFond) + xJoueur < e['x2'] + imgElevateur.width) {
 			e['actif'] = true;
+			if (e['timeout'] == null) {
+				e['timeout'] = setInterval("deplacement("+elevateurNumber+")", 10);
+			}
 			if (e['direction'] == false) {
 				e['direction'] = true;
 			}
@@ -95,11 +109,17 @@ function deplacement(elevateurNumber) {
 				e['direction'] = false;
 			}
 		}
+		else {
+			e['actif'] = false;
+			clearTimeout(e['timeout']);
+			e['timeout'] = null;
+			setTimeout("deplacement("+elevateurNumber+")", 1000);
+		}
 	}
 };
 
 function lancerElevateurs() {
 	for (var i=0; i<listeElevateurs.length; i++) {
-		setInterval("deplacement("+i+")", 10);
+		listeElevateurs[i]['timeout'] = setInterval("deplacement("+i+")", 10);
 	}
 };
