@@ -96,6 +96,6 @@ document.onkeyup = function(e) {
 		else {
 			statusPersonnage = 5;
 		}
-		context.drawImage(p1, xJoueur, canvas.height - p1.height - sol.height);
+		context.drawImage(p1, xJoueur, yJoueur);
 	}
 }
