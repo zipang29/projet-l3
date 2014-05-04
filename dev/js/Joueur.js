@@ -129,7 +129,6 @@ function sauter() {
 					xJoueur = 450;
 				}
 			}
-			
 		}
 		else {
 			statusPersonnage = 4;

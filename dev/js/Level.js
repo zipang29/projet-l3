@@ -151,6 +151,7 @@ function loadLevel1() {
 				addAllPlateformesLevel1();
 				loadInterface();
 				initChronometre();
+				setInterval("verifGravite()", 500);
 			}
 			sol.src = 'img/decors/lvl1/sol.png';
         };

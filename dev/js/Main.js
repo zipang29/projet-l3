@@ -4,8 +4,6 @@ var currentLevel;
 var partieEnCours;
 var score = 0;
 
-var joueur;
-
 var xFond; // Position de x actuelle pour le fond
 
 /** 

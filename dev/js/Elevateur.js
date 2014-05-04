@@ -63,41 +63,51 @@ function displayAllElevateurs() {
 function deplacement(elevateurNumber) {
 	var e = listeElevateurs[elevateurNumber];
 	if (e['actif'] == true) {
-		if (e['direction'] == false) {
-			if (e['x'] < e['x1']) {
-				e['x'] += 1;
-			}
-			if (e['y'] < e['y1']) {
-				e['y'] += 1;
-				yJoueur += 1;
-			}
-			if (e['x'] == e['x1'] && e['y'] == e['y1']) {
-				e['direction'] = false;
-				e['actif'] = false;
-				clearTimeout(e['timeout']);
-				e['timeout'] = null;
-				setTimeout("deplacement("+elevateurNumber+")", 1000);
-			}
+		if (!isOnThisElevateur(elevateurNumber)) {
+			e['actif'] = false;
+			clearTimeout(e['timeout']);
+			e['timeout'] = null;
+			setTimeout("deplacement("+elevateurNumber+")", 1000);
 		}
-		if (e['direction'] == true) {
-			if (e['x'] > e['x2']) {
-				e['x'] -= 1;
+		else {
+			if (e['direction'] == false) {
+				if (e['x'] < e['x1']) {
+					e['x'] += 1;
+				}
+				if (e['y'] < e['y1']) {
+					e['y'] += 1;
+					if (yJoueur + p0.height == e['y']) { // Si le joueur est sur l'élévateur mais pas au même niveau
+						yJoueur += 1;
+					}
+				}
+				if (e['x'] == e['x1'] && e['y'] == e['y1']) {
+					e['direction'] = false;
+					e['actif'] = false;
+					clearTimeout(e['timeout']);
+					e['timeout'] = null;
+					setTimeout("deplacement("+elevateurNumber+")", 1000);
+				}
 			}
-			if (e['y'] > e['y2']) {
-				e['y'] -= 1;
-				yJoueur -= 1;
-			}
-			if (e['x'] == e['x2'] && e['y'] == e['y2']) {
-				e['direction'] = true;
-				e['actif'] = false;
-				clearTimeout(e['timeout']);
-				e['timeout'] = null;
-				setTimeout("deplacement("+elevateurNumber+")", 1000);
+			if (e['direction'] == true) {
+				if (e['x'] > e['x2']) {
+					e['x'] -= 1;
+				}
+				if (e['y'] > e['y2']) {
+					e['y'] -= 1;
+					yJoueur -= 1;
+				}
+				if (e['x'] == e['x2'] && e['y'] == e['y2']) {
+					e['direction'] = true;
+					e['actif'] = false;
+					clearTimeout(e['timeout']);
+					e['timeout'] = null;
+					setTimeout("deplacement("+elevateurNumber+")", 1000);
+				}
 			}
 		}
 	}
 	else {
-		if (Math.abs(xFond) + xJoueur > e['x1'] && Math.abs(xFond) + xJoueur < e['x2'] + imgElevateur.width) {
+		if (isOnThisElevateur(elevateurNumber)) {
 			e['actif'] = true;
 			if (e['timeout'] == null) {
 				e['timeout'] = setInterval("deplacement("+elevateurNumber+")", 10);
@@ -123,3 +133,26 @@ function lancerElevateurs() {
 		listeElevateurs[i]['timeout'] = setInterval("deplacement("+i+")", 10);
 	}
 };
+
+function isOnThisElevateur(i) {
+	var ret = false;
+	var elevateur = listeElevateurs[i];
+	if (Math.abs(xFond) + xJoueur > elevateur['x1'] && Math.abs(xFond) + xJoueur < elevateur['x1'] + imgElevateur.width) {
+		ret = true;
+	}
+	return ret;
+}
+
+/**
+* Test si le joueur est sur un élévateur
+*/
+function joueurIsOnElevateur() {
+	var ret = false;
+	for (i=0; i<listeElevateurs.length; i++) {
+		ret = isOnThisElevateur(i);
+		if (ret) {
+			break;
+		}
+	}
+	return ret;
+}

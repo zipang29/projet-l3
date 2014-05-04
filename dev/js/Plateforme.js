@@ -38,3 +38,18 @@ function displayAllPlateformes() {
 		context.drawImage(imgPlateforme, xFond + plateforme['x'], plateforme['y']);
 	}
 };
+
+/**
+* Test si le joueur est sur une plateforme
+*/
+function joueurIsOnPlateforme() {
+	var ret = false;
+	for (i=0; i<listePlateforme.length; i++) {
+		var plateforme = listePlateforme[i];
+		if (Math.abs(xFond) + xJoueur > plateforme['x'] && Math.abs(xFond) + xJoueur < plateforme['x'] + imgPlateforme.width) {
+			ret = true;
+			break;
+		}
+	}
+	return ret;
+}
