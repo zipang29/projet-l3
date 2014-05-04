@@ -47,6 +47,10 @@ var v_saut = -11;
 var v_gravitation = 0.3;//32
 var v_y = this.v_saut; // Vitesse verticale
 
+/**
+* Initialise le joueur dans le jeu
+* @param xFond La position x du fond actuelle
+*/
 function createJoueur(xFond) {
 	loadImg();
 	vieJoueur = 3;
@@ -58,6 +62,9 @@ function createJoueur(xFond) {
 	sautAvant = null;
 };
 
+/**
+* Charge les différentes images du joueur en mémoire et définit la variable yJoueur
+*/
 function loadImg() {
 	p0 = new Image();
 	p1 = new Image();

@@ -60,6 +60,11 @@ function displayAllElevateurs() {
 	}
 };
 
+/**
+* Déplace l'élévateur spécifié de haut en bas et de bas en haut, suivant sa position. Quand l'élévateur est en haut ou en bas, celui ci attends 1 seconde avant 
+* de changer de direction (ex : (haut -> bas) => (bas -> haut).
+* @param elevateurNumber L'identifiant de l'élévateur dans la liste des élévateurs
+*/
 function deplacement(elevateurNumber) {
 	var e = listeElevateurs[elevateurNumber];
 	if (e['actif'] == true) {
@@ -128,12 +133,19 @@ function deplacement(elevateurNumber) {
 	}
 };
 
+/**
+* Active le fonctionnement des élévateurs dans la liste
+*/
 function lancerElevateurs() {
 	for (var i=0; i<listeElevateurs.length; i++) {
 		listeElevateurs[i]['timeout'] = setInterval("deplacement("+i+")", 10);
 	}
 };
 
+/**
+* Détermine si le joueur est sur l'élévateur n°i
+* @param i L'identifiant de l'élévateur
+*/
 function isOnThisElevateur(i) {
 	var ret = false;
 	var elevateur = listeElevateurs[i];
