@@ -94,8 +94,8 @@ function loadInterface() {
 	coeurPerdu.src = 'img/objets/coeurVide.png';
 	context.font = '20px Arial';
 	context.fillText("Score : " + score, 830, 30);
-	context.fillText("Temps : " + chrono.toFixed(2), 830, 50);
-
+	//context.fillText("Temps : " + chrono.toFixed(2), 830, 50);
+	context.fillText("Temps : " + minutes + ":" + secondes + ":" + dixiemes, 830, 50);
 }
 
 /**
@@ -114,8 +114,8 @@ function updateInterface() {
 		}
 	}
 	context.fillText("Score : " + score, 830, 30);
-	context.fillText("Temps : " + chrono.toFixed(2), 830, 50);
-
+	//context.fillText("Temps : " + chrono.toFixed(2), 830, 50);
+	context.fillText("Temps : " + minutes + ":" + secondes + ":" + dixiemes, 830, 50);
 }
 
 /**
@@ -150,6 +150,7 @@ function loadLevel1() {
 				loadEnnemis();
 				addAllPlateformesLevel1();
 				loadInterface();
+				initChronometre();
 			}
 			sol.src = 'img/decors/lvl1/sol.png';
         };
@@ -199,5 +200,6 @@ function loadLevel5() {
 function perdu() {
 	context.fillText("Perdu !", 500, 250);
 	context.fillText("Score : " + score, 830, 30);
-	context.fillText("Temps : " + chrono.toFixed(2), 830, 50);
+	//context.fillText("Temps : " + chrono.toFixed(2), 830, 50);
+	context.fillText("Temps : " + minutes + ":" + secondes + ":" + dixiemes, 830, 50);
 }
