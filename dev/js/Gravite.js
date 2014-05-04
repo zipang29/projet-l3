@@ -22,6 +22,7 @@ function tomber() {
 		yJoueur += 5;
 	}
 	else {
+		yJoueur = canvas.height - p1.height - sol.height;
 		clearInterval(timerTomber);
 		timerTomber = null;
 	}

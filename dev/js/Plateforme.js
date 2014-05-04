@@ -46,7 +46,7 @@ function joueurIsOnPlateforme() {
 	var ret = false;
 	for (i=0; i<listePlateforme.length; i++) {
 		var plateforme = listePlateforme[i];
-		if (Math.abs(xFond) + xJoueur > plateforme['x'] && Math.abs(xFond) + xJoueur < plateforme['x'] + imgPlateforme.width) {
+		if (Math.abs(xFond) + xJoueur > plateforme['x'] && Math.abs(xFond) + xJoueur < plateforme['x'] + imgPlateforme.width && yJoueur + p0.height <= plateforme['y']) {
 			ret = true;
 			break;
 		}
