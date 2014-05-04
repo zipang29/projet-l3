@@ -19,7 +19,7 @@ function verifGravite() {
 
 function tomber() {
 	if (yJoueur < canvas.height - p1.height - sol.height) {
-		yJoueur += 1;
+		yJoueur += 5;
 	}
 	else {
 		clearInterval(timerTomber);
