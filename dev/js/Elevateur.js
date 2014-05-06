@@ -70,7 +70,6 @@ function deplacement(elevateurNumber) {
 	if (e['actif'] == true) {
 		if (!isOnPositionXElevateur(elevateurNumber)) {
 			desactiverElevateur(elevateurNumber);
-			//yJoueur--;
 		}
 		else {
 			if (e['direction'] == false) {
@@ -85,19 +84,18 @@ function deplacement(elevateurNumber) {
 				}
 				if (e['x'] == e['x1'] && e['y'] == e['y1']) {
 					e['direction'] = false;
-					e['actif'] = false;
-					clearTimeout(e['timeout']);
-					e['timeout'] = null;
-					setTimeout("deplacement("+elevateurNumber+")", 1000);
+					desactiverElevateur(elevateurNumber);
 				}
 			}
 			if (e['direction'] == true) {
 				if (e['x'] > e['x2']) {
 					e['x'] -= 1;
 				}
-				if (e['y'] > e['y2']) {
+				if (e['y'] >= e['y2']) {
 					e['y'] -= 1;
-					yJoueur -= 1;
+					if (isOnThisElevateur(elevateurNumber)) {
+						yJoueur -= 1;
+					}
 				}
 				if (e['x'] == e['x2'] && e['y'] == e['y2']) {
 					e['direction'] = true;
@@ -152,7 +150,7 @@ function lancerElevateurs() {
 function isOnThisElevateur(i) {
 	var ret = false;
 	var elevateur = listeElevateurs[i];
-	if (Math.abs(xFond) + xJoueur > elevateur['x1'] && Math.abs(xFond) + xJoueur < elevateur['x1'] + imgElevateur.width && yJoueur + p0.height <= elevateur['y']) {
+	if (Math.abs(xFond) + xJoueur > elevateur['x1'] && Math.abs(xFond) + xJoueur < elevateur['x1'] + imgElevateur.width && yJoueur + p0.height == elevateur['y'] + 1) {
 		ret = true;
 	}
 	return ret;
@@ -176,7 +174,7 @@ function isOnPositionXElevateur(i) {
 function joueurIsOnElevateur() {
 	var ret = false;
 	for (i=0; i<listeElevateurs.length; i++) {
-		ret = isOnThisElevateur(i);
+		ret = isOnPositionXElevateur(i);
 		if (ret) {
 			break;
 		}
