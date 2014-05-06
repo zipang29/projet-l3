@@ -70,7 +70,7 @@ function deplacement(elevateurNumber) {
 	if (e['actif'] == true) {
 		if (!isOnPositionXElevateur(elevateurNumber)) {
 			desactiverElevateur(elevateurNumber);
-			yJoueur--;
+			//yJoueur--;
 		}
 		else {
 			if (e['direction'] == false) {
@@ -79,7 +79,7 @@ function deplacement(elevateurNumber) {
 				}
 				if (e['y'] < e['y1']) {
 					e['y'] += 1;
-					if (yJoueur + p0.height + 1 == elevateur['y']) {
+					if (yJoueur < canvas.height - p1.height - sol.height) {
 						yJoueur += 1;
 					}
 				}
@@ -101,10 +101,7 @@ function deplacement(elevateurNumber) {
 				}
 				if (e['x'] == e['x2'] && e['y'] == e['y2']) {
 					e['direction'] = true;
-					e['actif'] = false;
-					clearTimeout(e['timeout']);
-					e['timeout'] = null;
-					setTimeout("deplacement("+elevateurNumber+")", 1000);
+					desactiverElevateur(elevateurNumber);
 				}
 			}
 		}
@@ -132,6 +129,7 @@ function deplacement(elevateurNumber) {
 * Permet de désactiver un élévateur
 */
 function desactiverElevateur(elevateurNumber) {
+	var e = listeElevateurs[elevateurNumber];
 	e['actif'] = false;
 	clearTimeout(e['timeout']);
 	e['timeout'] = null;
