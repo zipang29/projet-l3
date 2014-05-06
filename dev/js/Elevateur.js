@@ -68,11 +68,9 @@ function displayAllElevateurs() {
 function deplacement(elevateurNumber) {
 	var e = listeElevateurs[elevateurNumber];
 	if (e['actif'] == true) {
-		if (!isOnThisElevateur(elevateurNumber)) {
-			e['actif'] = false;
-			clearTimeout(e['timeout']);
-			e['timeout'] = null;
-			setTimeout("deplacement("+elevateurNumber+")", 1000);
+		if (!isOnPositionXElevateur(elevateurNumber)) {
+			desactiverElevateur(elevateurNumber);
+			yJoueur--;
 		}
 		else {
 			if (e['direction'] == false) {
@@ -81,7 +79,7 @@ function deplacement(elevateurNumber) {
 				}
 				if (e['y'] < e['y1']) {
 					e['y'] += 1;
-					if (yJoueur + p0.height == e['y']) { // Si le joueur est sur l'élévateur mais pas au même niveau
+					if (yJoueur + p0.height + 1 == elevateur['y']) {
 						yJoueur += 1;
 					}
 				}
@@ -112,7 +110,7 @@ function deplacement(elevateurNumber) {
 		}
 	}
 	else {
-		if (isOnThisElevateur(elevateurNumber)) {
+		if (isOnPositionXElevateur(elevateurNumber)) {
 			e['actif'] = true;
 			if (e['timeout'] == null) {
 				e['timeout'] = setInterval("deplacement("+elevateurNumber+")", 10);
@@ -125,12 +123,19 @@ function deplacement(elevateurNumber) {
 			}
 		}
 		else {
-			e['actif'] = false;
-			clearTimeout(e['timeout']);
-			e['timeout'] = null;
-			setTimeout("deplacement("+elevateurNumber+")", 1000);
+			desactiverElevateur(elevateurNumber);
 		}
 	}
+};
+
+/**
+* Permet de désactiver un élévateur
+*/
+function desactiverElevateur(elevateurNumber) {
+	e['actif'] = false;
+	clearTimeout(e['timeout']);
+	e['timeout'] = null;
+	setTimeout("deplacement("+elevateurNumber+")", 1000);
 };
 
 /**
@@ -147,6 +152,18 @@ function lancerElevateurs() {
 * @param i L'identifiant de l'élévateur
 */
 function isOnThisElevateur(i) {
+	var ret = false;
+	var elevateur = listeElevateurs[i];
+	if (Math.abs(xFond) + xJoueur > elevateur['x1'] && Math.abs(xFond) + xJoueur < elevateur['x1'] + imgElevateur.width && yJoueur + p0.height <= elevateur['y']) {
+		ret = true;
+	}
+	return ret;
+}
+
+/**
+* Détermine si le joueur est au niveau de l'élévateur par rapport à l'axe x
+*/
+function isOnPositionXElevateur(i) {
 	var ret = false;
 	var elevateur = listeElevateurs[i];
 	if (Math.abs(xFond) + xJoueur > elevateur['x1'] && Math.abs(xFond) + xJoueur < elevateur['x1'] + imgElevateur.width) {
