@@ -124,7 +124,7 @@ function updateBidon() {
 * @return true si il y a collision, false sinon
 */
 function collisionBidon(bidonNumber) {
-	var b = listeBidon[bidonNumber];
+	/*var b = listeBidon[bidonNumber];
 	if ((vieJoueur>0) && ((xFond + b['currentX'] + 25) <= (xJoueur + p0.width)) && ((xFond + b['currentX'] + bidon1.height + 25) > (xJoueur + p0.width))) {
 		if ((500 - sol.height - bidon1.height) < (yJoueur + p0.height)) {
 			vieJoueur--;
@@ -133,7 +133,7 @@ function collisionBidon(bidonNumber) {
 			}
 			b['currentX'] += 50;
 		}
-	}
+	}*/
 }
 
 /**
