@@ -3,6 +3,8 @@ var minutes;
 var secondes;
 var dixiemes;
 
+var enPause = false;
+
 var initChronometre = function() {
 	minutes = 0;
 	secondes = 0;
@@ -22,20 +24,26 @@ function chronometrer() {
 	}
 }
 
-var suspendreChronometre = function() {
-	clearTimeout(chronometreDemarre);
-}
-
+/**
+* Fonction pour désactiver la pause
+*/
 var changBout2 = function() {
 	boutpause.onclick = changBout1;
 	boutpause.value = "Mettre en pause";
+	lancerBidon();
+	mainTimer = setInterval("redraw()", 30/1000);
+	enPause = false;
 }
 
+/**
+* Met en pause le jeu
+*/
 var changBout1 = function() {
-	timer = setInterval("init()",0);
-    boutpause = document.getElementById("pause")
+    boutpause = document.getElementById("pause");
     boutpause.onclick = changBout2;
-	window.clearInterval();
-	suspendreChronometre();
+	clearInterval(mainTimer);
+	mainTimer = null;
+	desactiverBidon();
 	boutpause.value = "Redémarrer";
+	enPause = true;
 }

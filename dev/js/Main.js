@@ -3,7 +3,7 @@ var canvas, context;
 var currentLevel;
 var partieEnCours;
 var score = 0;
-
+var mainTimer;
 var xFond; // Position de x actuelle pour le fond
 
 /** 
@@ -16,7 +16,7 @@ var coeurPerdu; // Image d'un coeur de vie perdu
 /**
 * Fonction utilisée pour initialiser et lancer le jeu
 */
-function init() 
+function init()
 {
  	partieEnCours = 0;
 	xFond = 0;
@@ -27,7 +27,7 @@ function init()
 	currentLevel = 1;
 	loadLevel(currentLevel);
 	window.onload = function() {
-		setInterval("redraw()", 30/1000);
+		mainTimer = setInterval("redraw()", 30/1000);
 	}
 }
 

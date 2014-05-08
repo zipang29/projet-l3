@@ -1,5 +1,8 @@
 ﻿var listeBidon = new Array();
 
+var listeTimerAnnimationBidon = new Array();
+var listeTimerCollisionBidon = new Array();
+
 var bidon0, bidon1, bidon2, bidon3, bidon4, bidon5; // Bidon statique 1, ...
 
 /**
@@ -124,7 +127,7 @@ function updateBidon() {
 * @return true si il y a collision, false sinon
 */
 function collisionBidon(bidonNumber) {
-	/*var b = listeBidon[bidonNumber];
+	var b = listeBidon[bidonNumber];
 	if ((vieJoueur>0) && ((xFond + b['currentX'] + 25) <= (xJoueur + p0.width)) && ((xFond + b['currentX'] + bidon1.height + 25) > (xJoueur + p0.width))) {
 		if ((500 - sol.height - bidon1.height) < (yJoueur + p0.height)) {
 			vieJoueur--;
@@ -133,7 +136,7 @@ function collisionBidon(bidonNumber) {
 			}
 			b['currentX'] += 50;
 		}
-	}*/
+	}
 }
 
 /**
@@ -141,7 +144,16 @@ function collisionBidon(bidonNumber) {
 */
 function lancerBidon() {
 	for (var i=0; i<listeBidon.length; i++) {
-		setInterval("annimationBidon("+i+")", 10);
-		setInterval("collisionBidon("+i+")", 10);
+		listeTimerAnnimationBidon[i] = setInterval("annimationBidon("+i+")", 10);
+		listeTimerCollisionBidon[i] = setInterval("collisionBidon("+i+")", 10);
+	}
+}
+
+function desactiverBidon() {
+	for (var i=0; i<listeTimerCollisionBidon.length; i++) {
+		clearInterval(listeTimerCollisionBidon[i]);
+		listeTimerCollisionBidon[i] = null;
+		clearInterval(listeTimerAnnimationBidon[i]);
+		listeTimerAnnimationBidon[i] = null;
 	}
 }
