@@ -67,9 +67,21 @@ function loadEnnemis() {
 	initialiseBidon();
 	addBidon(400, 600);
 	addBidon(1400, 2000);
+	addBidon(2300, 2450);
+	addBidon(3000, 3200);
+	addBidon(4000, 4200);
 	addBidon(5000, 5200);
-	addBidon(5300, 5400);
+	addBidon(6000, 6050);
 	addBidon(7000, 7300);
+	addBidon(7300, 7400);
+	addBidon(8000, 8400);
+	addBidon(8000, 8500);
+	addBidon(8600, 8700);
+	addBidon(9400, 9600);
+	addBidon(9500, 9700);
+	addBidon(10000, 10800);
+	addBidon(12000, 12200);
+	addBidon(13000, 13100);
 	lancerBidon();
 }
 
