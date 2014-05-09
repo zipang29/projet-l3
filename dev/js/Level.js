@@ -36,6 +36,7 @@ function updateLevel(level) {
 				displayAllElevateurs();
 				displayAllPlateformes();
 				updateInterface();
+				displayAllObjects();
 				context.drawImage(finNiveau, xFond + 14200, 217);
 			break;
 			case 2:
@@ -139,6 +140,12 @@ function addAllPlateformesLevel1() {
 	lancerElevateurs();
 }
 
+function addAllObjectLevel1() {
+	addCoeurRamassable(1150, 150);
+	addCoeurRamassable(9050, 150);
+	setInterval("onObject()", 100);
+}
+
 /**
 * Charge les éléments du niveau 1 du jeu
 */
@@ -159,6 +166,7 @@ function loadLevel1() {
 				createJoueur(50);
 				loadEnnemis();
 				addAllPlateformesLevel1();
+				addAllObjectLevel1();
 				loadInterface();
 				initChronometre();
 				finNiveau = new Image();
