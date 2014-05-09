@@ -134,6 +134,8 @@ function addAllPlateformesLevel1() {
 	initPlateforme();
 	addElevateur(1000-195, canvas.height - sol.height, 1000-195, 200);//position de la plateforme (ligne ci-après) moins la largeur de l'image d'un élévateur
 	addPlateforme(1000, 200);
+	addElevateur(8900-195, canvas.height - sol.height, 8900-195, 200);
+	addPlateforme(8900, 200);
 	lancerElevateurs();
 }
 
