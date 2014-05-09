@@ -103,6 +103,9 @@ function loadInterface() {
 		context.drawImage(this, 170, 10);
 	}
 	coeurPerdu.src = 'img/objets/coeurVide.png';
+	piece = new Image();
+	piece.src = 'img/objets/piece1.png';
+
 	context.font = '20px Arial';
 	context.fillText("Score : " + score, 830, 30);
 	context.fillText("Temps : " + minutes + ":" + secondes + ":" + dixiemes, 830, 50);
@@ -143,6 +146,9 @@ function addAllPlateformesLevel1() {
 function addAllObjectLevel1() {
 	addCoeurRamassable(1150, 150);
 	addCoeurRamassable(9050, 150);
+	addPieceRamassable(1120, 150);
+	addPieceRamassable(1110, 150);
+	addPieceRamassable(1100, 150);
 	setInterval("onObject()", 100);
 }
 
