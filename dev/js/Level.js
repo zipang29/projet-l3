@@ -1,9 +1,4 @@
 /**
-* temps de jeu du Joueur 
-*/
-var chrono = 0.0 ;
-
-/**
 * Charge le niveau correspondant
 * @var int level Le numéro du niveau à charger
 */
@@ -31,17 +26,17 @@ function loadLevel(level) {
 }
 
 function updateLevel(level) {
-	if (vieJoueur > 0) {
+	if (vieJoueur > 0 && Math.abs(xFond) + xJoueur < 14300) {
 		switch (level) {
 			case 1:
 				updateLevel1();
 				annimJoueur();
 				collisionBidon(4);
-				chrono += 0.003 ; // incremente le chrono de 30 milisecondes
 				updateBidon();
 				displayAllElevateurs();
 				displayAllPlateformes();
 				updateInterface();
+				context.drawImage(finNiveau, xFond + 14200, 217);
 			break;
 			case 2:
 			
@@ -59,6 +54,9 @@ function updateLevel(level) {
 				updateLevel1();
 			break;
 		}
+	}
+	else if (Math.abs(xFond) + xJoueur >= 14300) {
+		gagner();
 	}
 	else {
 		perdu();
@@ -149,8 +147,10 @@ function loadLevel1() {
 				addAllPlateformesLevel1();
 				loadInterface();
 				initChronometre();
+				finNiveau = new Image();
+				finNiveau.src = 'img/decors/lvl1/finNiveau.png';
 				setInterval("verifGravite()", 100);
-			}
+			};
 			sol.src = 'img/decors/lvl1/sol.png';
         };
         f2.src = 'img/decors/lvl1/montagneAvant.png';
@@ -191,6 +191,10 @@ function loadLevel4() {
 */
 function loadLevel5() {
 
+}
+
+function gagner() {
+	context.fillText("Vous avez gagne !", 450, 250);
 }
 
 /**

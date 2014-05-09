@@ -10,6 +10,7 @@ var xFond; // Position de x actuelle pour le fond
 * Images 
 */
 var f1, f2, sol; // Image de fond 1, image de fond 2, image du sol
+var finNiveau;
 var coeur; // Image de coeur de vie
 var coeurPerdu; // Image d'un coeur de vie perdu
 
