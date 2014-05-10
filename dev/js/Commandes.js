@@ -19,11 +19,11 @@ var saut;
 document.onkeydown = function(e) {
 	if (!enPause) {
 		// On met ceci hors de la fonction de répétition car on ne doit pas pouvoir sauter plusieurs fois d'affiler (pas avant d'avoir toucher le sol à nouveau)
-		if (e.keyCode == 32 || (e.keyCode == 32 && timer != null)) {
+		if (e.keyCode == 32 || (e.keyCode == 32/* && timer != null*/)) {
 			if (!sautEnCours) {
-				if (e.keyCode == 32 && timer != null) {
+				/*if (e.keyCode == 32/* && timer != null) {
 					touchePrecedente = 32;
-				}
+				}*/
 				sautEnCours = true;
 				if (statusPersonnage == 0 || statusPersonnage == 1 || statusPersonnage == 2) {
 					sautAvant = true;
@@ -40,47 +40,49 @@ document.onkeydown = function(e) {
 				recule = false;
 			}
 		}
-		if (timer) return;
-		timer = setInterval(function(){
-			if (!sautEnCours) {
-				// Flèche droite : on avance
-				if (e.keyCode == 39) {
-					recule = false;
-					if (statusPersonnage >= 0 && statusPersonnage < 2) {
-						statusPersonnage++;
-					}
-					else {
-						statusPersonnage = 0;
-					}
-					if (xJoueur == 450) {
-						if (Math.abs(xFond - 10) < f1.width - canvas.width && Math.abs(xFond - 10) < f2.width - canvas.width) {
-							xFond -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche ou répétition de touche
+		else {
+			if (timer) return;
+			timer = setInterval(function(){
+				if (!sautEnCours) {
+					// Flèche droite : on avance
+					if (e.keyCode == 39) {
+						recule = false;
+						if (statusPersonnage >= 0 && statusPersonnage < 2) {
+							statusPersonnage++;
+						}
+						else {
+							statusPersonnage = 0;
+						}
+						if (xJoueur == 450) {
+							if (Math.abs(xFond - 10) < f1.width - canvas.width && Math.abs(xFond - 10) < f2.width - canvas.width) {
+								xFond -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche ou répétition de touche
+							}
+						}
+						else if (xJoueur < 450) {
+							xJoueur += 10;
 						}
 					}
-					else if (xJoueur < 450) {
-						xJoueur += 10;
-					}
-				}
-				// Flèche gauche : on recule
-				if (e.keyCode == 37) {
-					recule = true;
-					if (statusPersonnage >= 3 && statusPersonnage < 5) {
-						statusPersonnage++;
-					}
-					else {
-						statusPersonnage = 3;
-					}
-					if (xFond + 10 <= 0) {
-						xFond += 10;
-					}
-					else {
-						if (xJoueur - 10 > 0) {
-							xJoueur -= 10;
+					// Flèche gauche : on recule
+					if (e.keyCode == 37) {
+						recule = true;
+						if (statusPersonnage >= 3 && statusPersonnage < 5) {
+							statusPersonnage++;
+						}
+						else {
+							statusPersonnage = 3;
+						}
+						if (xFond + 10 <= 0) {
+							xFond += 10;
+						}
+						else {
+							if (xJoueur - 10 > 0) {
+								xJoueur -= 10;
+							}
 						}
 					}
 				}
-			}
-		}, 30); // Le dernier paramètre sert à modifier la vitesse d'avancement du joueur
+			}, 30); // Le dernier paramètre sert à modifier la vitesse d'avancement du joueur
+		}
 	}
 };
 
@@ -89,10 +91,10 @@ document.onkeydown = function(e) {
 */
 document.onkeyup = function(e) {
 	if (!enPause) {
-		clearTimeout(timer);
-		timer = null;
 		// Si on relache la flèche droite
 		if (e.keyCode == 39 || e.keyCode == 37) {
+			clearInterval(timer);
+			timer = null;
 			if (!recule) {
 				statusPersonnage = 0; // On affiche l'image du personnage qui ne marche pas
 			}
