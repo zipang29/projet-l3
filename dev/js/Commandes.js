@@ -52,10 +52,7 @@ document.onkeydown = function(e) {
 					else {
 						statusPersonnage = 0;
 					}
-					/*if (Math.abs(xFond) == 15000 - 1030 && xJoueur < canvas.width) {
-						xJoueur += 10;
-					}
-					else*/ if (xJoueur == 450) {
+					if (xJoueur == 450) {
 						if (Math.abs(xFond - 10) < f1.width - canvas.width && Math.abs(xFond - 10) < f2.width - canvas.width) {
 							xFond -= 10; // Permet de faire avancer de 10 pixel à chaque appuie sur une touche ou répétition de touche
 						}
