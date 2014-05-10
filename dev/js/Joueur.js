@@ -54,7 +54,7 @@ var v_y = this.v_saut; // Vitesse verticale
 function createJoueur(xFond) {
 	loadImg();
 	vieJoueur = 3;
-	score = 100;
+	score = 0;
 	statusPersonnage = 0;
 	xJoueur = xFond;
 	sautEnCours = false;

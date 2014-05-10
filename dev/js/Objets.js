@@ -25,7 +25,7 @@ function onObject() {
 			objet['ramasse'] = true;
 			vieJoueur++;
 		}
-		if (objet['type'] == 'piece' && !objet['ramasse'] && Math.abs(xFond) + xJoueur + p0.width > objet['x'] && Math.abs(xFond) + xJoueur + p0.width < objet['x'] + coeur.width && yJoueur <= objet['y']) {
+		if (objet['type'] == 'piece' && !objet['ramasse'] && Math.abs(xFond) + xJoueur + p0.width > objet['x'] && Math.abs(xFond) + xJoueur + p0.width < objet['x'] + piece.width && yJoueur <= objet['y'] + piece.height && yJoueur >= objet['y'] - 2*piece.height ) {
 			objet['ramasse'] = true;
 			score++;
 		}

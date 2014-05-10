@@ -146,9 +146,119 @@ function addAllPlateformesLevel1() {
 function addAllObjectLevel1() {
 	addCoeurRamassable(1150, 150);
 	addCoeurRamassable(9050, 150);
-	addPieceRamassable(1120, 150);
-	addPieceRamassable(1110, 150);
-	addPieceRamassable(1100, 150);
+	
+	addPieceRamassable(1075, 135);
+	addPieceRamassable(1095, 115);
+	addPieceRamassable(1115, 95);
+	addPieceRamassable(1135, 75);
+	addPieceRamassable(1155, 55);
+	addPieceRamassable(1175, 55);
+	addPieceRamassable(1195, 75);
+	addPieceRamassable(1215, 95);
+	addPieceRamassable(1235, 115);
+	addPieceRamassable(1255, 135);
+	
+	addPieceRamassable(1375, 55);
+	addPieceRamassable(1395, 75);
+	addPieceRamassable(1415, 95);
+	addPieceRamassable(1435, 115);
+	addPieceRamassable(1455, 135);
+	addPieceRamassable(1395, 55);
+	addPieceRamassable(1415, 75);
+	addPieceRamassable(1435, 95);
+	addPieceRamassable(1455, 115);
+	addPieceRamassable(1475, 135);
+	addPieceRamassable(1395, 55);
+	addPieceRamassable(1435, 75);
+	addPieceRamassable(1455, 95);
+	addPieceRamassable(1475, 115);
+	addPieceRamassable(1495, 135);
+	
+	addPieceRamassable(1375, 250);
+	addPieceRamassable(1395, 250);
+	addPieceRamassable(1415, 250);
+	addPieceRamassable(1435, 250);
+	addPieceRamassable(1455, 250);
+	addPieceRamassable(1475, 250);
+	addPieceRamassable(1495, 250);
+	
+	addPieceRamassable(1375, 410);
+	addPieceRamassable(1395, 410);
+	addPieceRamassable(1415, 410);
+	addPieceRamassable(1435, 410);
+	addPieceRamassable(1455, 410);
+	addPieceRamassable(1475, 410);
+	addPieceRamassable(1495, 410);
+	
+	addPieceRamassable(1675, 410);
+	addPieceRamassable(1695, 410);
+	addPieceRamassable(1715, 410);
+	addPieceRamassable(1735, 410);
+	addPieceRamassable(1755, 410);
+	addPieceRamassable(1775, 410);
+	addPieceRamassable(1795, 410);
+	
+	addPieceRamassable(3095, 410);
+	addPieceRamassable(3115, 410);
+	addPieceRamassable(3135, 410);
+	
+	addPieceRamassable(6035, 310);
+	addPieceRamassable(6035, 290);
+	addPieceRamassable(6035, 270);
+	addPieceRamassable(6035, 250);
+	
+	addPieceRamassable(8335, 410);
+	addPieceRamassable(8355, 410);
+	addPieceRamassable(8375, 410);
+	addPieceRamassable(8395, 410);
+	addPieceRamassable(8415, 410);
+	addPieceRamassable(8335, 390);
+	addPieceRamassable(8355, 390);
+	addPieceRamassable(8375, 390);
+	addPieceRamassable(8395, 390);
+	addPieceRamassable(8415, 390);
+	
+	addPieceRamassable(13000, 300);
+	addPieceRamassable(13030, 300);
+	addPieceRamassable(13060, 300);
+	addPieceRamassable(13090, 300);
+	addPieceRamassable(13120, 300);
+	
+	addPieceRamassable(13000, 280);
+	addPieceRamassable(13030, 280);
+	addPieceRamassable(13060, 280);
+	addPieceRamassable(13090, 280);
+	addPieceRamassable(13120, 280);
+	
+	addPieceRamassable(13000, 260);
+	addPieceRamassable(13030, 260);
+	addPieceRamassable(13060, 260);
+	addPieceRamassable(13090, 260);
+	addPieceRamassable(13120, 260);
+	
+	addPieceRamassable(13000, 260);
+	addPieceRamassable(13030, 260);
+	addPieceRamassable(13060, 260);
+	addPieceRamassable(13090, 260);
+	addPieceRamassable(13120, 260);
+	
+	addPieceRamassable(13000, 240);
+	addPieceRamassable(13030, 240);
+	addPieceRamassable(13060, 240);
+	addPieceRamassable(13090, 240);
+	addPieceRamassable(13120, 240);
+	
+	addPieceRamassable(8975, 135);
+	addPieceRamassable(8995, 115);
+	addPieceRamassable(9015, 95);
+	addPieceRamassable(9035, 75);
+	addPieceRamassable(9055, 55);
+	addPieceRamassable(9075, 55);
+	addPieceRamassable(9095, 75);
+	addPieceRamassable(9115, 95);
+	addPieceRamassable(9135, 115);
+	addPieceRamassable(9155, 135);
+	
 	setInterval("onObject()", 100);
 }
 
