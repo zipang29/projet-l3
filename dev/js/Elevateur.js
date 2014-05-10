@@ -54,7 +54,7 @@ function addElevateur(x1, y1, x2, y2) {
 */
 function displayAllElevateurs() {
 	var elevateur;
-	for (var i=0; i<listeElevateurs.length; i++) {
+	for (var i=0, t=listeElevateurs.length; i<t; i++) {
 		elevateur = listeElevateurs[i];
 		context.drawImage(imgElevateur, xFond + elevateur['x'], elevateur['y']);
 	}
@@ -138,7 +138,7 @@ function desactiverElevateur(elevateurNumber) {
 * Active le fonctionnement des élévateurs dans la liste
 */
 function lancerElevateurs() {
-	for (var i=0; i<listeElevateurs.length; i++) {
+	for (var i=0, t=listeElevateurs.length; i<t; i++) {
 		listeElevateurs[i]['timeout'] = setInterval("deplacement("+i+")", 10);
 	}
 };
@@ -173,7 +173,7 @@ function isOnPositionXElevateur(i) {
 */
 function joueurIsOnElevateur() {
 	var ret = false;
-	for (i=0; i<listeElevateurs.length; i++) {
+	for (var i=0, t=listeElevateurs.length; i<t; i++) {
 		ret = isOnPositionXElevateur(i);
 		if (ret) {
 			break;

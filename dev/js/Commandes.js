@@ -19,11 +19,8 @@ var saut;
 document.onkeydown = function(e) {
 	if (!enPause) {
 		// On met ceci hors de la fonction de répétition car on ne doit pas pouvoir sauter plusieurs fois d'affiler (pas avant d'avoir toucher le sol à nouveau)
-		if (e.keyCode == 32 || (e.keyCode == 32/* && timer != null*/)) {
+		if (e.keyCode == 32) {
 			if (!sautEnCours) {
-				/*if (e.keyCode == 32/* && timer != null) {
-					touchePrecedente = 32;
-				}*/
 				sautEnCours = true;
 				if (statusPersonnage == 0 || statusPersonnage == 1 || statusPersonnage == 2) {
 					sautAvant = true;

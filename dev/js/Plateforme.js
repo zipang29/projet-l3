@@ -33,7 +33,7 @@ function addPlateforme(x, y) {
 */
 function displayAllPlateformes() {
 	var plateforme;
-	for (var i=0; i<listePlateforme.length; i++) {
+	for (var i=0, t=listePlateforme.length; i<t; i++) {
 		plateforme = listePlateforme[i];
 		context.drawImage(imgPlateforme, xFond + plateforme['x'], plateforme['y']);
 	}
@@ -44,7 +44,7 @@ function displayAllPlateformes() {
 */
 function joueurIsOnPlateforme() {
 	var ret = false;
-	for (i=0; i<listePlateforme.length; i++) {
+	for (i=0, t=listePlateforme.length; i<t; i++) {
 		var plateforme = listePlateforme[i];
 		if (Math.abs(xFond) + xJoueur > plateforme['x'] && Math.abs(xFond) + xJoueur < plateforme['x'] + imgPlateforme.width && yJoueur + p0.height <= plateforme['y']) {
 			ret = true;

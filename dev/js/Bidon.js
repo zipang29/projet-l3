@@ -87,7 +87,7 @@ function annimationBidon(bidonNumber) {
 * @param bidonNumber int Le numéro du bidon dans listeBidon
 */
 function updateBidon() {
-	for (var i = 0, c = listeBidon.length; i < c; i++) {
+	for (var i = 0, t = listeBidon.length; i < t; i++) {
 		var b = listeBidon[i];
 		var y = canvas.height - bidon1.height - sol.height;
 		if (b['avance']) {
@@ -143,14 +143,14 @@ function collisionBidon(bidonNumber) {
 * Lance les annimations et les collisions pour tout les bidons qui ont étés ajoutés
 */
 function lancerBidon() {
-	for (var i=0; i<listeBidon.length; i++) {
+	for (var i=0, t=listeBidon.length; i<t; i++) {
 		listeTimerAnnimationBidon[i] = setInterval("annimationBidon("+i+")", 10);
 		listeTimerCollisionBidon[i] = setInterval("collisionBidon("+i+")", 10);
 	}
 }
 
 function desactiverBidon() {
-	for (var i=0; i<listeTimerCollisionBidon.length; i++) {
+	for (var i=0, t=listeTimerCollisionBidon.length; i<t; i++) {
 		clearInterval(listeTimerCollisionBidon[i]);
 		listeTimerCollisionBidon[i] = null;
 		clearInterval(listeTimerAnnimationBidon[i]);

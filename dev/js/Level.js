@@ -116,7 +116,7 @@ function loadInterface() {
 */
 function updateInterface() {
 	var xTmp = 10;
-	for (var i=0; i<vieJoueur; i++) {
+	for (var i=0, v=vieJoueur; i<v; i++) {
 		context.drawImage(coeur, xTmp, 10);
 		xTmp += 40;
 	}
