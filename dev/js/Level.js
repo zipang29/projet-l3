@@ -188,9 +188,9 @@ function loadLevel1() {
 }
 
 function updateLevel1() {
-	context.drawImage(f1, xFond, 0);
-	context.drawImage(f2, xFond, 0);
-	context.drawImage(sol, xFond, canvas.height - sol.height);
+	context.drawImage(f1, Math.abs(xFond), 0, 1000, 500, 0, 0, 1000, 500);
+	context.drawImage(f2, Math.abs(xFond), 0, 1000, 500, 0, 0, 1000, 500);
+	context.drawImage(sol, Math.abs(xFond), 0, 1000, 35, 0, canvas.height - sol.height, 1000, 35);
 }
 
 /**
