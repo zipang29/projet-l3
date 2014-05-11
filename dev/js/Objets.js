@@ -19,6 +19,7 @@ function addPieceRamassable(x, y) {
 }
 
 function onObject() {
+	var music = document.getElementById("bonus");
 	for (var i=0, t=listeObjets.length; i<t; i++) {
 		var objet = listeObjets[i];
 		if (objet['type'] == 'coeur' && !objet['ramasse'] && Math.abs(xFond) + xJoueur + p0.width > objet['x'] && Math.abs(xFond) + xJoueur + p0.width < objet['x'] + coeur.width && yJoueur <= objet['y']) {
@@ -27,6 +28,11 @@ function onObject() {
 		}
 		if (objet['type'] == 'piece' && !objet['ramasse'] && Math.abs(xFond) + xJoueur + p0.width > objet['x'] && Math.abs(xFond) + xJoueur + p0.width < objet['x'] + piece.width && yJoueur <= objet['y'] + piece.height && yJoueur >= objet['y'] - 2*piece.height ) {
 			objet['ramasse'] = true;
+			if (music.played) {
+				music.pause();
+				music.currentTime = 0;
+			}
+			music.play();
 			score++;
 		}
 	}
