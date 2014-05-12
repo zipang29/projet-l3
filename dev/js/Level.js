@@ -339,6 +339,10 @@ function gagner() {
 * Fonction appelé lorsque le joueur n'a plus de vie et a donc perdu
 */
 function perdu() {
+	var music = document.getElementById("music");
+	music.pause();
+	music.currentTime = 0;
+	suspendreChronometre();
 	context.fillText("Perdu !", 500, 250);
 	context.fillText("Score : " + score, 830, 30);
 	context.fillText("Temps : " + minutes + ":" + secondes + ":" + dixiemes, 830, 50);

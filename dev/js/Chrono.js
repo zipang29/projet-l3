@@ -24,6 +24,10 @@ function chronometrer() {
 	}
 }
 
+var suspendreChronometre = function() {
+	clearTimeout(chronometreDemarre);
+}
+
 /**
 * Fonction pour désactiver la pause
 */

@@ -135,6 +135,9 @@ function collisionBidon(bidonNumber) {
 				score -= 50;
 			}
 			b['currentX'] += 150;
+			if(score == 0) {
+				suspendreChronometre();
+			}
 		}
 	}
 }

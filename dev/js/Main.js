@@ -21,7 +21,7 @@ function init()
 {
  	partieEnCours = 0;
 	xFond = 0;
-	boutpause=document.getElementById("pause")
+	boutpause = document.getElementById("pause");
     boutpause.onclick = changBout1; //Voir fichier Chrono.js
 	canvas = document.getElementById("elevator");
     context = canvas.getContext("2d");
