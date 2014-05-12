@@ -332,7 +332,12 @@ function loadLevel5() {
 }
 
 function gagner() {
+	music.pause();
+	music.currentTime = 0;
+	suspendreChronometre();
 	context.fillText("Vous avez gagne !", 450, 250);
+	context.fillText("Score : " + score, 830, 30);
+	context.fillText("Temps : " + minutes + ":" + secondes + ":" + dixiemes, 830, 50);
 }
 
 /**
